@@ -1,0 +1,26 @@
+---
+const { title } = Astro.props;
+---
+
+<article class='h-[10cm]'>
+  <section class='flex justify-center items-center h-full'>
+    <h1 class='uppercase font-bold'>{title}</h1>
+  </section>
+</article>
+
+<style>
+  /* Debug */
+  * {
+    border: solid 1px var(--white);
+  }
+  /* Contenedor */
+  article {
+    background: url(../assets/background.png) no-repeat center/cover;
+  }
+  /* Titulo */
+  h1 {
+    font-size: 50px;
+    margin-top: 2cm;
+    font-family: var(--title);
+  }
+</style>

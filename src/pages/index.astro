@@ -1,11 +1,39 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Variables
+const campaign = 'Nyvasma';
+const version = '0.0.1:1602';
 ---
 
 <Layout>
-	<Welcome />
+  <article>
+    <section class='flex justify-center items-center'>
+      <h1>Welcome to {campaign}</h1>
+    </section>
+    <section class='absolute m-2 -mt-8'>
+      <p class='text-gray-800 font-semibold'>v_{version}</p>
+    </section>
+  </article>
 </Layout>
+
+<style>
+  /* Debug */
+  /* * {
+    border: solid 1px var(--white);
+  } */
+  /* Contenedores */
+  article {
+    height: 100vh;
+
+    background: url('../assets/background.png') no-repeat center/cover;
+  }
+  section:first-of-type {
+    height: 100%;
+  }
+  /* Titulo */
+  h1 {
+    font-size: 70px;
+    font-family: var(--title);
+  }
+</style>

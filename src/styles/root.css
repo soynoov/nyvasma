@@ -1,0 +1,12 @@
+:root {
+  /* Paleta de Colores */
+  --black: #1c1c1c;
+  --white: #e0e0e0;
+  --gray: #c5c6c7;
+  /* Fuentes */
+  --title: 'Langar';
+  --text: 'Quicksand';
+  /* Sombras y Efectos */
+  --shadow: 5px 5px 20px #141414, -5px -5px 20px #242424;
+  --shadow-pressed: inset 5px 5px 20px #141414, inset -5px -5px 20px #242424;
+}

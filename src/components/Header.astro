@@ -1,0 +1,85 @@
+---
+const characters = '/characters/characters';
+---
+
+<header class='h-[2cm] justify-between'>
+  <div class='imagotipo'>
+    <a href='/'>
+      <img
+        src='/favicon.svg'
+        alt='isotipo'
+        class='h-[2cm] p-2 cursor-pointer'
+      />
+      <div class='text-left p-2 cursor-pointer'>
+        <h1 class='text-gray-400'>D&D Template</h1>
+        <h1 class='text-2xl'>Nombre de Campaña</h1>
+      </div>
+    </a>
+  </div>
+  <ul class='menu justify-end'>
+    <a href={characters}>
+      <li>Personajes</li>
+    </a>
+    <a href=''>
+      <li>Universo</li>
+    </a>
+    <a href=''>
+      <li>Enciclopedia</li>
+    </a>
+    <a href=''>
+      <li>Créditos</li>
+    </a>
+  </ul>
+</header>
+
+<style>
+  /* Debug */
+  /* * {
+    border: solid 1px var(--white);
+  } */
+  /* Globales */
+  header,
+  .imagotipo a,
+  .menu {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+  }
+  /* Individuales */
+  header {
+    background-color: var(--black);
+    box-shadow: var(--shadow);
+    font-family: var(--title);
+    position: fixed;
+  }
+  /* -- Imagotipo */
+  .imagotipo {
+    width: 100%;
+  }
+  .imagotipo a {
+    width: 50%;
+
+    margin: 0;
+    padding: 0;
+
+    cursor: default;
+  }
+  /* -- Enlaces */
+  a {
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 300ms ease;
+
+    padding: 1rem;
+    margin-inline: 1rem;
+
+    width: 5cm;
+    border-radius: 0.5rem;
+  }
+  .menu a:hover {
+    box-shadow: var(--shadow-pressed);
+  }
+  /* -- Textos */
+</style>
