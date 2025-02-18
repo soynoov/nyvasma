@@ -2,14 +2,89 @@
 import Layout from '@/layouts/Layout.astro';
 
 // Variables
-const campaign = 'Nyvasma';
-const version = '0.0.1:1602';
+const campaign = 'ReVoidegon 2.0';
+const version = '0.0.2:1802';
 ---
 
 <Layout>
-  <article>
-    <section class='flex justify-center items-center'>
-      <h1>Welcome to {campaign}</h1>
+  <article class='text-center'>
+    <section class='flex justify-center items-center flex-col'>
+      <h1>Welcome to <br /> {campaign}</h1>
+      <!-- Creative Commons -->
+      <div class='flex gap-4 mt-[1cm]'>
+        <svg
+          width='30'
+          height='30'
+          viewBox='0 0 24 24'
+          stroke-width='2'
+          stroke='currentColor'
+          fill='none'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+        >
+          <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+          <path d='M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0'></path>
+          <path
+            d='M10.5 10.5c-.847 -.71 -2.132 -.658 -2.914 .116a1.928 1.928 0 0 0 0 2.768c.782 .774 2.067 .825 2.914 .116'
+          ></path>
+          <path
+            d='M16.5 10.5c-.847 -.71 -2.132 -.658 -2.914 .116a1.928 1.928 0 0 0 0 2.768c.782 .774 2.067 .825 2.914 .116'
+          ></path>
+        </svg>
+        <!-- Reconocimiento (BY) -->
+        <svg
+          width='30'
+          height='30'
+          viewBox='0 0 24 24'
+          stroke-width='2'
+          stroke='currentColor'
+          fill='none'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+        >
+          <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+          <path d='M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0'></path>
+          <path d='M12 7m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
+          <path
+            d='M9 13v-1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-.5l-.5 4h-2l-.5 -4h-.5a1 1 0 0 1 -1 -1z'
+          ></path>
+        </svg>
+        <!-- No Comercial (NC) -->
+        <svg
+          width='30'
+          height='30'
+          viewBox='0 0 24 24'
+          stroke-width='2'
+          stroke='currentColor'
+          fill='none'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+        >
+          <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+          <path d='M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0'></path>
+          <path d='M15 9h-4.5a1.5 1.5 0 0 0 0 3h3a1.5 1.5 0 0 1 0 3h-4.5'
+          ></path>
+          <path d='M12 7v2'></path><path d='M12 15v2'></path>
+          <path d='M6 6l3 3'></path>
+          <path d='M15 15l3 3'></path>
+        </svg>
+        <!-- Compartir Igual (SA) -->
+        <svg
+          width='30'
+          height='30'
+          viewBox='0 0 24 24'
+          stroke-width='2'
+          stroke='currentColor'
+          fill='none'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+        >
+          <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+          <path d='M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0'></path>
+          <path d='M12 16a4 4 0 1 0 -4 -4v1'></path>
+          <path d='M6 12l2 2l2 -2'></path>
+        </svg>
+      </div>
     </section>
     <section class='absolute m-2 -mt-8'>
       <p class='text-gray-800 font-semibold'>v_{version}</p>
@@ -18,13 +93,16 @@ const version = '0.0.1:1602';
 </Layout>
 
 <style>
-  /* Debug */
+  /* Debug Mode */
   /* * {
     border: solid 1px var(--white);
   } */
   /* Contenedores */
+  html {
+    overflow-y: hidden;
+  }
   article {
-    height: 100vh;
+    height: 95dvh;
 
     background: url('../assets/background.png') no-repeat center/cover;
   }

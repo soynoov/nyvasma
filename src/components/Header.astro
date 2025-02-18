@@ -17,6 +17,9 @@ const characters = '/characters/characters';
     </a>
   </div>
   <ul class='menu justify-end'>
+    <a href=''>
+      <li>Campañas</li>
+    </a>
     <a href={characters}>
       <li>Personajes</li>
     </a>
@@ -27,7 +30,7 @@ const characters = '/characters/characters';
       <li>Enciclopedia</li>
     </a>
     <a href=''>
-      <li>Créditos</li>
+      <li>Herramientas</li>
     </a>
   </ul>
 </header>
@@ -51,14 +54,16 @@ const characters = '/characters/characters';
     background-color: var(--black);
     box-shadow: var(--shadow);
     font-family: var(--title);
-    position: fixed;
+
+    position: sticky;
+    top: 0;
   }
   /* -- Imagotipo */
   .imagotipo {
     width: 100%;
   }
   .imagotipo a {
-    width: 50%;
+    width: 75%;
 
     margin: 0;
     padding: 0;

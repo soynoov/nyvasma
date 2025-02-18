@@ -1,9 +1,23 @@
 ---
+import '@/styles/style.css';
 import Layout from '@/layouts/Layout.astro';
 import Banner from '@/components/Banner.astro';
 ---
 
 <Layout>
-  <Banner title='Todos los Personajes' />
-  <h1 class='pt-20'>Personajes</h1>
+  <Banner title='Personajes' />
+  <main class='main'>
+    <article>
+      <section>
+        <h1>Personajes Jugables</h1>
+      </section>
+    </article>
+  </main>
 </Layout>
+
+<style>
+  /* Debug Mode */
+  /* * {
+    border: solid 1px var(--white);
+  } */
+</style>
