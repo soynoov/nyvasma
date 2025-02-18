@@ -1,4 +1,9 @@
 /* Quicksand */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-/* Langar */
-@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+/* New Rocker */
+@import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
+
+/* Titulos */
+h1 {
+  font-family: var(--title);
+}

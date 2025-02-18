@@ -2,14 +2,24 @@
 import '@/styles/style.css';
 import Layout from '@/layouts/Layout.astro';
 import Banner from '@/components/Banner.astro';
+// Componentes de Jugadores
+import Card from '@/components/characters/Card.astro';
 ---
 
 <Layout>
   <Banner title='Personajes' />
   <main class='main'>
     <article>
-      <section>
-        <h1>Personajes Jugables</h1>
+      <section class='pb-4'>
+        <h1>Jugadores</h1>
+      </section>
+      <section class='grid grid-cols-4 gap-4'>
+        <!-- Aqui va una función Map que recorra la Base de Datos, y muestre tantos divs como jugadores haya -->
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </section>
     </article>
   </main>
