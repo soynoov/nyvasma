@@ -10,10 +10,10 @@ import Card from '@/components/characters/Card.astro';
   <Banner title='Personajes' />
   <main class='main'>
     <article>
-      <section class='pb-4'>
-        <h1>Jugadores</h1>
+      <section>
+        <h1 class='text-4xl'>Jugadores</h1>
       </section>
-      <section class='grid grid-cols-4 gap-4'>
+      <section class='flex flex-wrap justify-center gap-4'>
         <!-- Aqui va una función Map que recorra la Base de Datos, y muestre tantos divs como jugadores haya -->
         <Card />
         <Card />
@@ -30,4 +30,8 @@ import Card from '@/components/characters/Card.astro';
   /* * {
     border: solid 1px var(--white);
   } */
+  /* Secciones */
+  section {
+    padding: 2rem;
+  }
 </style>

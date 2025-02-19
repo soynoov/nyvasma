@@ -2,13 +2,18 @@
 
 ---
 
-<div class='card rounded-lg'>
-  <img src='/src/assets/background.png' alt='' class='rounded-2xl' />
-  <!-- Iconos de Raza y Clase? -->
-  <!-- Nombre -->
-  <h2></h2>
-  <!-- Frase? -->
-</div>
+<a href=''>
+  <div class='card rounded-2xl'>
+    <img
+      src='/src/assets/background.png'
+      alt=''
+      class='rounded-t-2xl object-cover'
+    />
+    <div class='p-4'>
+      <h2 class='text-lg'>Isidoro Matamoros</h2>
+    </div>
+  </div>
+</a>
 
 <style>
   /* Tarjetas */
@@ -17,8 +22,18 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
+
+    transition: box-shadow 400ms ease;
+  }
+  .card:hover {
+    box-shadow: var(--shadow);
   }
   .card img {
-    height: 10cm;
+    width: 8cm;
+    height: 8cm;
+  }
+  /* Textos */
+  h2 {
+    font-family: var(--handwritten);
   }
 </style>
