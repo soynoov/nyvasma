@@ -1,25 +1,28 @@
 ---
-import '@/styles/style.css';
 import Layout from '@/layouts/Layout.astro';
 import Banner from '@/components/Banner.astro';
 // Componentes de Jugadores
 import Card from '@/components/characters/Card.astro';
+// Astro DB
+import { db, Jugadores } from 'astro:db';
+
+const jugadores = await db.select().from(Jugadores);
 ---
 
 <Layout>
-  <Banner title='Personajes' />
+  <Banner text='Personajes' />
   <main class='main'>
     <article>
       <section>
         <h1 class='text-4xl'>Jugadores</h1>
       </section>
       <section class='flex flex-wrap justify-center gap-4'>
-        <!-- Aqui va una función Map que recorra la Base de Datos, y muestre tantos divs como jugadores haya -->
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <!-- Aqui va una función Map que recorra la Base de Datos, y muestre tantas Cards como jugadores haya -->
+        {
+          jugadores.map((jugador) => (
+            <Card id={jugador.id} name={jugador.nombre} />
+          ))
+        }
       </section>
     </article>
   </main>

@@ -1,0 +1,30 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Banner from '@/components/Banner.astro';
+// Jugadores
+import Experience from '@/components/characters/players/Experience.astro';
+// DB
+import { db, eq, Jugadores } from 'astro:db';
+
+export async function getStaticPaths() {
+  const jugadores = await db.select().from(Jugadores);
+
+  return jugadores.map((jugador) => ({
+    params: { player: jugador.id },
+  }));
+}
+const { player } = Astro.params;
+
+const jugador = await db
+  .select()
+  .from(Jugadores)
+  .where(eq(Jugadores.id, player));
+const chosen = jugador[0];
+---
+
+<Layout>
+  <Banner text={chosen.nombre} />
+  <main class='main'>
+    <Experience />
+  </main>
+</Layout>

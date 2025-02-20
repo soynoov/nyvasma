@@ -1,4 +1,3 @@
-import { reference } from 'astro:content';
 import { column, defineTable, defineDb } from 'astro:db';
 
 // https://astro.build/db/config
@@ -7,13 +6,14 @@ import { column, defineTable, defineDb } from 'astro:db';
 // Jugadores
 const Jugadores = defineTable({
   columns: {
-    id: column.number({ primaryKey: true }),
+    id: column.number({ primaryKey: true, autoIncrement: true }),
     nombre: column.text(),
     raza: column.text({ references: () => Razas.columns.nombre }), // FK
     clase: column.text({ references: () => Clases.columns.nombre }), //FK
     alineamiento: column.text(), //FK
-    trasfondo: column.text(), //FK
-    inspiracion: column.number(),
+    trasfondo: column.text({ references: () => Trasfondos.columns.nombre }), //FK
+    inspiracion: column.number({ optional: true }),
+    estadisticas: column.json(),
   },
 });
 
@@ -46,5 +46,5 @@ const Trasfondos = defineTable({
 
 // DB
 export default defineDb({
-  tables: { Jugadores, Razas, Clases },
+  tables: { Jugadores, Razas, Clases, Trasfondos },
 });
