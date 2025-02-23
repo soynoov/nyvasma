@@ -2,9 +2,14 @@
 import Layout from '@/layouts/Layout.astro';
 import Banner from '@/components/Banner.astro';
 // Jugadores
+import Portrait from '@/components/characters/Portrait.astro';
 import Experience from '@/components/characters/players/Experience.astro';
+import Stats from '@/components/characters/Stats.astro';
+import Speed from '@/components/characters/Speed.astro';
+import INI from '@/components/characters/INI.astro';
 // DB
 import { db, eq, Jugadores } from 'astro:db';
+import { Razas } from 'astro:db';
 
 export async function getStaticPaths() {
   const jugadores = await db.select().from(Jugadores);
@@ -19,12 +24,87 @@ const jugador = await db
   .select()
   .from(Jugadores)
   .where(eq(Jugadores.id, player));
-const chosen = jugador[0];
+const chosen = jugador[0]; // Elegimos el Primero
+
+const raza = await db.select().from(Razas).where(eq(Razas.nombre, chosen.raza));
+const raceChosen = raza[0];
 ---
 
 <Layout>
   <Banner text={chosen.nombre} />
   <main class='main'>
-    <Experience />
+    <article class='tabs flex justify-around gap-8 mb-4 p-4 rounded-2xl'>
+      <section>
+        <h2>Atributos y Habilidades</h2>
+      </section>
+      <section>
+        <h2>Inventario</h2>
+      </section>
+      <section>
+        <h2>Historia</h2>
+      </section>
+    </article>
+    <!-- MAIN -->
+    <article class='grid grid-cols-8 gap-4'>
+      <section class='col-span-8'>
+        <Experience
+          exp={chosen.experiencia}
+          raza={chosen.raza}
+          clase={chosen.clase}
+        />
+      </section>
+      <!-- Velocidad -->
+      <section class='col-span-1 row-span-1'>
+        <Speed speed={raceChosen.pies} />
+      </section>
+      <section class='col-span-1 row-span-1'>
+        <INI />
+      </section>
+      <!-- Imagen -->
+      <section class='col-span-4 row-span-4'>
+        <Portrait />
+      </section>
+      <!-- Estadisticas -->
+      <section class='col-span-2 row-span-4'>
+        <Stats />
+      </section>
+      <section class='col-span-2 row-span-1'>
+        <Speed speed={raceChosen.pies} />
+      </section>
+      <section class='col-span-1 row-span-1'>
+        <Speed speed={raceChosen.pies} />
+      </section>
+      <section class='col-span-1 row-span-1'>
+        <Speed speed={raceChosen.pies} />
+      </section>
+      <section class='col-span-2 row-span-1'>
+        <Speed speed={raceChosen.pies} />
+      </section>
+      <section class='col-span-8 row-span-1'>
+        <h3>Vida</h3>
+      </section>
+    </article>
   </main>
 </Layout>
+
+<style>
+  /* Debug Mode */
+  /* * {
+    border: solid 1px var(--white);
+  } */
+  /* Sections */
+  .tabs {
+    box-shadow: var(--shadow);
+  }
+  .tabs section {
+    box-shadow: var(--shadow);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 100%;
+
+    font-family: var(--title);
+  }
+  .tabs section:hover {
+    box-shadow: var(--shadow-pressed);
+  }
+</style>

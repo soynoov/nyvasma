@@ -1,24 +1,33 @@
 ---
-
+interface Props {
+  exp: Number;
+  clase: String;
+  raza: String;
+}
+const { exp, raza, clase } = Astro.props;
+const percentage = (Number(exp) / 900) * 100;
 ---
 
-<article class='flex gap-4 rounded-2xl'>
-  <section>
-    <h3>Raza</h3>
+<article class='grid grid-cols-10 rounded-2xl'>
+  <section class='col-span-2'>
+    <h3>{raza}</h3>
   </section>
-  <section class='experience'>
+  <section class='experience col-span-6 flex justify-center items-center gap-6'>
+    <h3>Nivel <b>2</b></h3>
     <div class='experience-bar rounded-lg'>
-      <h3 class='text-black font-bold'>0/300</h3>
+      <div class='experience-progress' style=`width: ${percentage}%`></div>
     </div>
+    <h3><b class='text-amber-300'>{exp}</b>/900</h3>
   </section>
-  <section>
-    <h3>Clase</h3>
+  <section class='col-span-2'>
+    <h3>{clase}</h3>
   </section>
 </article>
 
 <style>
   article {
     box-shadow: var(--shadow);
+    font-family: var(--handwritten);
   }
   section {
     transition: box-shadow 300ms ease;
@@ -26,7 +35,6 @@
     border-radius: 0.5rem;
     cursor: pointer;
 
-    width: 100%;
     margin: 1rem;
     padding: 1rem;
   }
@@ -40,12 +48,21 @@
     padding: 0;
   }
   .experience-bar {
-    box-shadow: var(--shadow);
-    background-color: var(--white);
+    box-shadow: var(--shadow-pressed);
     box-sizing: border-box;
 
-    padding: 1rem;
+    height: 0.5cm;
+    width: 80%;
+  }
+  .experience-progress {
+    background: linear-gradient(
+      90deg,
+      var(--color-amber-600) 0%,
+      var(--color-amber-300) 100%
+    );
+    box-shadow: var(--shadow);
+    border-radius: 0.5rem;
+
     height: 100%;
-    width: 90%;
   }
 </style>

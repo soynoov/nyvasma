@@ -10,6 +10,7 @@ const Jugadores = defineTable({
     nombre: column.text(),
     raza: column.text({ references: () => Razas.columns.nombre }), // FK
     clase: column.text({ references: () => Clases.columns.nombre }), //FK
+    experiencia: column.number({ default: 0 }),
     alineamiento: column.text(), //FK
     trasfondo: column.text({ references: () => Trasfondos.columns.nombre }), //FK
     inspiracion: column.number({ optional: true }),
@@ -22,7 +23,9 @@ const Razas = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
     nombre: column.text({ unique: true }),
-    velocidad: column.number(),
+    pies: column.number({ default: 30 }),
+    volar: column.number({ optional: true, default: 0 }),
+    excavar: column.number({ optional: true, default: 0 }),
   },
 });
 
@@ -32,6 +35,7 @@ const Clases = defineTable({
     id: column.number({ primaryKey: true }),
     nombre: column.text({ unique: true }),
     dados_golpe: column.number(),
+    competencias: column.json(),
   },
 });
 

@@ -2,10 +2,12 @@ import { db, Jugadores, Razas, Clases, Trasfondos } from 'astro:db';
 
 // https://astro.build/db/seed
 export default async function seed() {
-  await db.insert(Razas).values([{ nombre: 'Tiefling', velocidad: 30 }]);
+  await db
+    .insert(Razas)
+    .values([{ nombre: 'Tiefling' }, { nombre: 'Aasimar', volar: 60 }]);
   await db.insert(Clases).values([
-    { nombre: 'Mago', dados_golpe: 6 },
-    { nombre: 'Bardo', dados_golpe: 6 },
+    { nombre: 'Mago', dados_golpe: 6, competencias: [] },
+    { nombre: 'Bardo', dados_golpe: 8, competencias: ['DES', 'CAR'] },
   ]);
   await db
     .insert(Trasfondos)
@@ -29,8 +31,9 @@ export default async function seed() {
     },
     {
       nombre: 'Nyliss Avacynn',
-      raza: 'Tiefling',
+      raza: 'Aasimar',
       clase: 'Mago',
+      experiencia: 435,
       alineamiento: 'Caótico Malo',
       trasfondo: 'Artista',
       estadisticas: {
