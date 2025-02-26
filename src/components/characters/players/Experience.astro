@@ -38,8 +38,9 @@ const percentage = (Number(exp) / 900) * 100;
     margin: 1rem;
     padding: 1rem;
   }
-  section:hover {
-    box-shadow: var(--shadow-pressed);
+  section:hover:not(.experience) {
+    box-shadow: var(--shadow-pressed-theme);
+    background-color: var(--theme);
   }
   /* Experience */
   section.experience {

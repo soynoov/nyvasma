@@ -9,4 +9,8 @@
   /* Sombras y Efectos */
   --shadow: 5px 5px 5px #141414, -5px -5px 5px #242424;
   --shadow-pressed: inset 5px 5px 5px #141414, inset -5px -5px 5px #242424;
+  /* Tema */
+  --theme: #5a247b;
+  --shadow-theme: 5px 5px 5px #3f1956, -5px -5px 5px #752fa0;
+  --shadow-pressed-theme: inset 5px 5px 5px #3f1956, inset -5px -5px 5px #752fa0;
 }
