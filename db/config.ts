@@ -7,14 +7,19 @@ import { column, defineTable, defineDb } from 'astro:db';
 const Jugadores = defineTable({
   columns: {
     id: column.number({ primaryKey: true, autoIncrement: true }),
-    nombre: column.text(),
+    name: column.text(),
     raza: column.text({ references: () => Razas.columns.nombre }), // FK
     clase: column.text({ references: () => Clases.columns.nombre }), //FK
-    experiencia: column.number({ default: 0 }),
+    // Experiencia (Nivel)
+    exp: column.number({ default: 0 }),
     alineamiento: column.text(), //FK
     trasfondo: column.text({ references: () => Trasfondos.columns.nombre }), //FK
+    // La Cantidad de Inspiración que tiene
     inspiracion: column.number({ optional: true }),
-    estadisticas: column.json(),
+    // Estadisticas
+    stats: column.json(), // FUE, DES, CON, INT, SAB, CAR
+    //Tabla de Salud
+    health_table: column.json(), // Los Resultados que le han salido en el Dado de Salud al subir de Nivel
   },
 });
 

@@ -6,10 +6,10 @@ import Portrait from '@/components/characters/Portrait.astro';
 import Experience from '@/components/characters/players/Experience.astro';
 import Stats from '@/components/characters/Stats.astro';
 import Speed from '@/components/characters/Speed.astro';
-import INI from '@/components/characters/INI.astro';
+import Iniciative from '@/components/characters/mini/Iniciative.astro';
+import Health from '@/components/characters/mini/Health.astro';
 // DB
-import { db, eq, Jugadores } from 'astro:db';
-import { Razas } from 'astro:db';
+import { db, eq, Jugadores, Razas, Clases } from 'astro:db';
 
 export async function getStaticPaths() {
   const jugadores = await db.select().from(Jugadores);
@@ -28,6 +28,12 @@ const chosen = jugador[0]; // Elegimos el Primero
 
 const raza = await db.select().from(Razas).where(eq(Razas.nombre, chosen.raza));
 const raceChosen = raza[0];
+
+const clase = await db
+  .select()
+  .from(Clases)
+  .where(eq(Clases.nombre, chosen.clase));
+const classChosen = clase[0];
 ---
 
 <Layout>
@@ -58,11 +64,11 @@ const raceChosen = raza[0];
         <Speed speed={raceChosen.pies} />
       </section>
       <section class='col-span-1 row-span-1'>
-        <INI />
+        <Iniciative />
       </section>
       <!-- Imagen -->
       <section class='col-span-4 row-span-4'>
-        <Portrait />
+        <Portrait name={chosen.nombre.split(' ')[0]} />
       </section>
       <!-- Estadisticas -->
       <section class='col-span-2 row-span-4'>
@@ -81,31 +87,32 @@ const raceChosen = raza[0];
         <Speed speed={raceChosen.pies} />
       </section>
       <section class='col-span-8 row-span-1'>
-        <h3>Vida</h3>
+        <Health hit_dice={classChosen.dados_golpe} />
       </section>
     </article>
   </main>
-</Layout>
 
-<style>
-  /* Debug Mode */
-  /* * {
+  <style>
+    /* Debug Mode */
+    /* * {
     border: solid 1px var(--white);
   } */
-  /* Sections */
-  .tabs {
-    box-shadow: var(--shadow);
-  }
-  .tabs section {
-    box-shadow: var(--shadow);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    width: 100%;
+    /* Sections */
+    .tabs {
+      box-shadow: var(--shadow);
+    }
+    .tabs section {
+      box-shadow: var(--shadow);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      width: 100%;
 
-    font-family: var(--title);
-  }
-  .tabs section:hover {
-    box-shadow: var(--shadow-pressed-theme);
-    background-color: var(--theme);
-  }
-</style>
+      font-family: var(--title);
+    }
+    .tabs section:hover {
+      background: url(/src/assets/noise_theme.svg);
+      box-shadow: var(--shadow-pressed-theme);
+      background-color: var(--theme);
+    }
+  </style>
+</Layout>

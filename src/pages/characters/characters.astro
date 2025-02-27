@@ -10,11 +10,11 @@ const jugadores = await db.select().from(Jugadores);
 ---
 
 <Layout>
-  <Banner text='Personajes' />
+  <Banner text='Personajes Destacados' />
   <main class='main'>
     <article>
       <section>
-        <h1 class='text-4xl'>Jugadores</h1>
+        <h1 class='text-4xl'>Nuestros <i>"Heroes"</i></h1>
       </section>
       <section class='flex flex-wrap justify-center gap-4'>
         <!-- Aqui va una función Map que recorra la Base de Datos, y muestre tantas Cards como jugadores haya -->
@@ -35,6 +35,6 @@ const jugadores = await db.select().from(Jugadores);
   } */
   /* Secciones */
   section {
-    padding: 2rem;
+    padding: 1rem;
   }
 </style>

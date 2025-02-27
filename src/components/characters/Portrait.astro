@@ -1,13 +1,16 @@
 ---
-
+interface Props {
+  name: String;
+}
+const { name } = Astro.props;
 ---
 
 <article class='p-4 rounded-2xl h-full'>
   <section class='h-full'>
     <img
-      src='/src/assets/background.png'
+      src=`/src/assets/${name}.jpg`
       alt=''
-      class='rounded-2xl object-cover w-full h-full'
+      class='rounded-2xl object-cover w-full h-full object-top aspect-square'
     />
   </section>
 </article>
@@ -22,6 +25,5 @@
   }
   img {
     box-shadow: var(--shadow-pressed);
-    /* aspect-ratio: 9 / 16; */
   }
 </style>

@@ -27,7 +27,7 @@ const percentage = (Number(exp) / 900) * 100;
 <style>
   article {
     box-shadow: var(--shadow);
-    font-family: var(--handwritten);
+    font-family: var(--number);
   }
   section {
     transition: box-shadow 300ms ease;
@@ -40,6 +40,7 @@ const percentage = (Number(exp) / 900) * 100;
   }
   section:hover:not(.experience) {
     box-shadow: var(--shadow-pressed-theme);
+    background: url(/src/assets/noise_theme.svg);
     background-color: var(--theme);
   }
   /* Experience */

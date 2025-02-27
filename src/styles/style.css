@@ -4,5 +4,60 @@
 
   text-align: center;
 }
+@media (max-width: 1600px) {
+  .main {
+    width: inherit;
+  }
+}
 
 /* Titulos */
+
+.number {
+  font-family: var(--number);
+}
+
+/* ### PRESETS ### */
+/* Shadows */
+.shadow {
+  box-shadow: var(--shadow);
+}
+.shadow:hover {
+  box-shadow: var(--shadow-pressed);
+}
+
+.pressed {
+  box-shadow: var(--shadow-pressed);
+}
+/* Animaciones */
+.transition {
+  transition: all 300ms ease;
+}
+
+.shadow-animation {
+  animation: shadowAnimationReverse 300ms;
+}
+.shadow-animation:hover {
+  animation: shadowAnimation 300ms;
+}
+@keyframes shadowAnimation {
+  0% {
+    box-shadow: var(--shadow);
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: var(--shadow-pressed);
+  }
+}
+@keyframes shadowAnimationReverse {
+  0% {
+    box-shadow: var(--shadow-pressed);
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: var(--shadow);
+  }
+}

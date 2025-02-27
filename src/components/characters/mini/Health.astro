@@ -1,0 +1,35 @@
+---
+interface Props {
+  hit_dice: Number;
+}
+const { hit_dice } = Astro.props;
+
+const max_health = hit_dice;
+let health = Number(hit_dice) - 2;
+let porcentaje = (health / Number(max_health)) * 100;
+---
+
+<article class='rounded-2xl p-4'>
+  <section class='rounded-lg flex gap-4 items-center justify-around p-4'>
+    <p class='text-lg'>{health}</p>
+    <div class='pressed w-full h-[.5cm] rounded-lg'>
+      <div class='rounded-lg bg-red-800 h-[.5cm]' style=`width: ${porcentaje}%`>
+      </div>
+    </div>
+    <p class='text-lg'>{max_health}</p>
+  </section>
+</article>
+
+<style>
+  article,
+  div {
+    box-shadow: var(--shadow);
+  }
+  section,
+  .pressed {
+    box-shadow: var(--shadow-pressed);
+  }
+  p {
+    font-family: var(--number);
+  }
+</style>

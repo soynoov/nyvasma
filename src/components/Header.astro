@@ -5,16 +5,16 @@ const universe = '/universe/universe';
 ---
 
 <header class='h-[2cm] justify-between'>
-  <div class='imagotipo'>
+  <div class='imagotipo p-2'>
     <a href='/'>
       <img
-        src='/favicon.svg'
+        src='/isotipo.png'
         alt='isotipo'
-        class='h-[2cm] p-2 cursor-pointer'
+        class='h-[1.75cm] p-2 cursor-pointer'
       />
-      <div class='text-left p-2 cursor-pointer'>
-        <h1 class='text-gray-400'>D&D Template</h1>
-        <h1 class='text-2xl'>Nombre de Campaña</h1>
+      <div class='text-left p-4 cursor-pointer'>
+        <h1 class='text-gray-400'>Universo D&D</h1>
+        <h1 class='text-2xl'>Voidegon</h1>
       </div>
     </a>
   </div>
@@ -35,6 +35,19 @@ const universe = '/universe/universe';
       <li>Herramientas</li>
     </a>
   </ul>
+  <div class='mobile-menu p-4 fill-white'>
+    <svg
+      id='fi_8777583'
+      height='24'
+      viewBox='0 0 512 512'
+      width='24'
+      xmlns='http://www.w3.org/2000/svg'
+      data-name='Layer 1'
+      ><path
+        d='m35.021 218.979h441.958a37.021 37.021 0 0 1 0 74.042h-441.958a37.021 37.021 0 0 1 0-74.042zm441.958 32h-441.958a5.022 5.022 0 0 0 0 10.044h441.958a5.022 5.022 0 0 0 0-10.044zm-441.958-175.022h441.958a37.022 37.022 0 0 1 0 74.043h-441.958a37.022 37.022 0 0 1 0-74.043zm441.958 32h-441.958a5.022 5.022 0 0 0 0 10.043h441.958a5.022 5.022 0 0 0 0-10.043zm-441.958 254.043h441.958a37.022 37.022 0 0 1 0 74.043h-441.958a37.022 37.022 0 0 1 0-74.043zm441.958 32h-441.958a5.022 5.022 0 0 0 0 10.043h441.958a5.022 5.022 0 0 0 0-10.043zm-441.958-276h441.958a5.022 5.022 0 0 0 0-10.043h-441.958a5.022 5.022 0 0 0 0 10.043zm441.958 132.978h-441.958a5.022 5.022 0 0 0 0 10.044h441.958a5.022 5.022 0 0 0 0-10.044zm0 143.022h-441.958a5.022 5.022 0 0 0 0 10.043h441.958a5.022 5.022 0 0 0 0-10.043z'
+        fill-rule='evenodd'></path></svg
+    >
+  </div>
 </header>
 
 <style>
@@ -53,6 +66,7 @@ const universe = '/universe/universe';
   }
   /* Individuales */
   header {
+    background: url(/src/assets/noise.svg);
     background-color: var(--black);
     box-shadow: var(--shadow);
     font-family: var(--title);
@@ -88,5 +102,18 @@ const universe = '/universe/universe';
   .menu a:hover {
     box-shadow: var(--shadow-pressed);
   }
+  .mobile-menu {
+    display: none;
+  }
   /* -- Textos */
+
+  /* Responsive */
+  @media (max-width: 1300px) {
+    .menu {
+      display: none;
+    }
+    .mobile-menu {
+      display: block;
+    }
+  }
 </style>
