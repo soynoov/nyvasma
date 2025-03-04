@@ -10,7 +10,7 @@ const { id, name } = Astro.props;
   <div class='card shadow shadow-animation rounded-2xl'>
     <img
       src=`/src/assets/${name.split(' ')[0]}.jpg`
-      alt=''
+      alt=`${name}`
       class='rounded-t-2xl object-cover object-top aspect-square'
     />
     <div class='flex items-center justify-between p-4 w-full'>
