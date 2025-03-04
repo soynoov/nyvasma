@@ -16,10 +16,10 @@
   --shadow-pressed-theme: inset 5px 5px 5px #3f1956, inset -5px -5px 5px #752fa0;
   --complementary: #49a462;
   /* Color Stats */
-  --fue: ;
-  --des: #f89d1f;
-  --con: ;
-  --int: ;
-  --sab: ;
-  --car: ;
+  --fue: #C60C30;
+  --des: #4B89BF;
+  --con: #138859;
+  --int: #F8D568;
+  --sab: #851291;
+  --car: #E7388A;
 }
