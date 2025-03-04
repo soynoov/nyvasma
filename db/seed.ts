@@ -4,23 +4,23 @@ import { db, Jugadores, Razas, Clases, Trasfondos } from 'astro:db';
 export default async function seed() {
   await db
     .insert(Razas)
-    .values([{ nombre: 'Tiefling' }, { nombre: 'Aasimar', volar: 60 }]);
+    .values([{ name: 'Tiefling' }, { name: 'Aasimar', volar: 60 }]);
   await db.insert(Clases).values([
-    { nombre: 'Mago', dados_golpe: 6, competencias: [] },
-    { nombre: 'Bardo', dados_golpe: 8, competencias: ['DES', 'CAR'] },
+    { name: 'Mago', dados_golpe: 6, competencias: [] },
+    { name: 'Bardo', dados_golpe: 8, competencias: ['DES', 'CAR'] },
   ]);
   await db
     .insert(Trasfondos)
-    .values([{ nombre: 'Artista', competencias: ['Historia', 'Medicina'] }]);
+    .values([{ name: 'Artista', competencias: ['Historia', 'Medicina'] }]);
 
   await db.insert(Jugadores).values([
     {
-      nombre: 'Lirael Lira',
+      name: 'Lirael Lira',
       raza: 'Tiefling',
       clase: 'Bardo',
       alineamiento: 'Caótico Bueno',
       trasfondo: 'Artista',
-      estadisticas: {
+      stats: {
         fue: 10,
         des: 14,
         con: 12,
@@ -30,13 +30,13 @@ export default async function seed() {
       },
     },
     {
-      nombre: 'Nyliss Avacynn',
+      name: 'Nyliss Avacynn',
       raza: 'Aasimar',
       clase: 'Mago',
-      experiencia: 435,
+      exp: 435,
       alineamiento: 'Caótico Malo',
       trasfondo: 'Artista',
-      estadisticas: {
+      stats: {
         fue: 10,
         des: 16,
         con: 10,

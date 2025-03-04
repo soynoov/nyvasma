@@ -61,3 +61,23 @@
     box-shadow: var(--shadow);
   }
 }
+
+/* Stats */
+.fue {
+  color: var(--fue);
+}
+.des {
+  color: var(--des);
+}
+.con {
+  color: var(--con);
+}
+.int {
+  color: var(--int);
+}
+.sab {
+  color: var(--sab);
+}
+.car {
+  color: var(--car);
+}

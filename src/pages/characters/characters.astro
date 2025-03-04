@@ -14,15 +14,22 @@ const jugadores = await db.select().from(Jugadores);
   <main class='main'>
     <article>
       <section>
-        <h1 class='text-4xl'>Nuestros <i>"Heroes"</i></h1>
+        <h1>Nuestros "Hélöëd"</h1>
+        <h4>Forjados en Murcia</h4>
       </section>
-      <section class='flex flex-wrap justify-center gap-4'>
+      <section class='flex flex-wrap justify-center gap-4 mb-8'>
         <!-- Aqui va una función Map que recorra la Base de Datos, y muestre tantas Cards como jugadores haya -->
         {
           jugadores.map((jugador) => (
-            <Card id={jugador.id} name={jugador.nombre} />
+            <Card id={jugador.id} name={jugador.name} />
           ))
         }
+      </section>
+    </article>
+    <article>
+      <section>
+        <h1>Rostros Conocidos</h1>
+        <h4>Forjados en Murcia</h4>
       </section>
     </article>
   </main>
@@ -36,5 +43,20 @@ const jugadores = await db.select().from(Jugadores);
   /* Secciones */
   section {
     padding: 1rem;
+  }
+  /* Titulos */
+  h1,
+  h4 {
+    font-family: var(--title);
+    text-transform: uppercase;
+  }
+  h1 {
+    color: var(--complementary);
+    font-weight: bold;
+    font-size: 35px;
+  }
+  h4 {
+    font-size: 15px;
+    color: var(--des);
   }
 </style>
