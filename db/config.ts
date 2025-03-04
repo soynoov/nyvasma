@@ -7,7 +7,7 @@ import { column, defineTable, defineDb } from 'astro:db';
 const Jugadores = defineTable({
   columns: {
     id: column.number({ primaryKey: true, autoIncrement: true }),
-    name: column.text(),
+    name: column.text({ unique: true }),
     raza: column.text({ references: () => Razas.columns.name }), // FK
     clase: column.text({ references: () => Clases.columns.name }), //FK
     // Experiencia (Nivel)
@@ -20,6 +20,14 @@ const Jugadores = defineTable({
     stats: column.json(), // FUE, DES, CON, INT, SAB, CAR
     //Tabla de Salud
     health_table: column.json({ optional: true }), // Los Resultados que le han salido en el Dado de Salud al subir de Nivel
+  },
+});
+
+// NPCs
+const NPCs = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true, autoIncrement: true }),
+    name: column.text({ unique: true }),
   },
 });
 

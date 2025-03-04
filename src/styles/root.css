@@ -14,12 +14,11 @@
   --theme: #5a247b;
   --shadow-theme: 5px 5px 5px #3f1956, -5px -5px 5px #752fa0;
   --shadow-pressed-theme: inset 5px 5px 5px #3f1956, inset -5px -5px 5px #752fa0;
-  --complementary: #49a462;
   /* Color Stats */
-  --fue: #C60C30;
-  --des: #4B89BF;
+  --fue: #ac1d1b;
+  --des: #ffbb00;
   --con: #138859;
-  --int: #F8D568;
-  --sab: #851291;
-  --car: #E7388A;
+  --int: #4b89bf;
+  --sab: #8937a4;
+  --car: #f66985;
 }
