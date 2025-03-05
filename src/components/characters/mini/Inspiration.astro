@@ -1,0 +1,17 @@
+---
+interface Props {
+  number?: Number;
+}
+const { number = 0 } = Astro.props;
+---
+
+<article class='shadow rounded-2xl p-4 h-full number'>
+  <section
+    class=`shadow shadow-hover shadow-animation
+    p-4 rounded-lg flex flex-col justify-center items-center gap-4 h-full cursor-pointer`
+  >
+    <h6 class='text-xl uppercase font-bold'>Inspiracion</h6>
+    <hr class='w-full' />
+    <h3 class='text-4xl'>{number}</h3>
+  </section>
+</article>

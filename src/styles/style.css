@@ -17,16 +17,21 @@
 }
 
 /* ### PRESETS ### */
+
+/* Rounded */
+
 /* Shadows */
 .shadow {
   box-shadow: var(--shadow);
+  border-radius: 1rem;
 }
-.shadow:hover {
+.shadow-hover:hover {
   box-shadow: var(--shadow-pressed);
 }
 
 .pressed {
   box-shadow: var(--shadow-pressed);
+  border-radius: 0.5rem;
 }
 /* Animaciones */
 .transition {

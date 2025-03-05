@@ -7,7 +7,9 @@ import Experience from '@/components/characters/players/Experience.astro';
 import Stats from '@/components/characters/Stats.astro';
 import Speed from '@/components/characters/Speed.astro';
 import Iniciative from '@/components/characters/mini/Iniciative.astro';
+import Inspiration from '@/components/characters/mini/Inspiration.astro';
 import Health from '@/components/characters/mini/Health.astro';
+import Comp from '@/components/characters/mini/Comp.astro';
 // DB
 import { db, eq, Jugadores, Razas, Clases } from 'astro:db';
 
@@ -38,26 +40,32 @@ const classChosen = clase[0];
 
 <Layout>
   <Banner text={chosen.name} />
-  <main class='main'>
-    <article class='tabs flex justify-around gap-8 mb-4 p-4 rounded-2xl'>
-      <section>
+  <main class='main h-[200vh]'>
+    <article
+      class='tabs flex justify-around gap-8 mb-4 p-4 rounded-2xl text-2xl sticky top-[2.3cm]'
+    >
+      <a href='#'>
         <h2>Atributos y Habilidades</h2>
-      </section>
-      <section>
+      </a>
+      <a>
         <h2>Inventario</h2>
-      </section>
-      <section>
+      </a>
+      <a>
         <h2>Historia</h2>
-      </section>
+      </a>
     </article>
     <!-- MAIN -->
     <article class='grid grid-cols-8 gap-4'>
       <section class='col-span-8 uppercase'>
-        <Experience exp={chosen.exp} raza={chosen.raza} clase={chosen.clase} />
+        <Experience
+          exp={Number(chosen.exp)}
+          raza={chosen.raza}
+          clase={chosen.clase}
+        />
       </section>
       <!-- Velocidad -->
       <section class='col-span-1 row-span-1'>
-        <Speed speed={raceChosen.pies} />
+        <Comp />
       </section>
       <section class='col-span-1 row-span-1'>
         <Iniciative />
@@ -74,10 +82,10 @@ const classChosen = clase[0];
         <Speed speed={raceChosen.pies} />
       </section>
       <section class='col-span-1 row-span-1'>
-        <Speed speed={raceChosen.pies} />
+        <Inspiration />
       </section>
       <section class='col-span-1 row-span-1'>
-        <Speed speed={raceChosen.pies} />
+        <Iniciative />
       </section>
       <section class='col-span-2 row-span-1'>
         <Speed speed={raceChosen.pies} />
@@ -96,8 +104,9 @@ const classChosen = clase[0];
     /* Sections */
     .tabs {
       box-shadow: var(--shadow);
+      background: url(/src/assets/noise.svg);
     }
-    .tabs section {
+    .tabs a {
       box-shadow: var(--shadow);
       border-radius: 0.5rem;
       padding: 1rem;
@@ -105,7 +114,7 @@ const classChosen = clase[0];
 
       font-family: var(--title);
     }
-    .tabs section:hover {
+    .tabs a:hover {
       background: url(/src/assets/noise_theme.svg);
       box-shadow: var(--shadow-pressed-theme);
       background-color: var(--theme);

@@ -16,7 +16,10 @@ export default async function seed() {
   await db.insert(Jugadores).values([
     {
       name: 'Lirael Lira',
+      age: 20,
       raza: 'Tiefling',
+      height: 1.68,
+      weight: 53,
       clase: 'Bardo',
       alineamiento: 'Caótico Bueno',
       trasfondo: 'Artista',
@@ -31,9 +34,13 @@ export default async function seed() {
     },
     {
       name: 'Nyliss Avacynn',
+      age: 83,
+      height: 1.79,
+      weight: 72,
       raza: 'Aasimar',
       clase: 'Mago',
       exp: 435,
+      level: 2,
       alineamiento: 'Caótico Malo',
       trasfondo: 'Artista',
       stats: {

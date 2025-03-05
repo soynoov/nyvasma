@@ -7,11 +7,16 @@ import { column, defineTable, defineDb } from 'astro:db';
 const Jugadores = defineTable({
   columns: {
     id: column.number({ primaryKey: true, autoIncrement: true }),
+    // LORE
     name: column.text({ unique: true }),
+    age: column.number(),
+    height: column.number(),
+    weight: column.number(),
     raza: column.text({ references: () => Razas.columns.name }), // FK
     clase: column.text({ references: () => Clases.columns.name }), //FK
     // Experiencia (Nivel)
-    exp: column.number({ default: 0 }),
+    exp: column.number({ default: 0, optional: true }),
+    level: column.number({ default: 1, optional: true }),
     alineamiento: column.text(), //FK
     trasfondo: column.text({ references: () => Trasfondos.columns.name }), //FK
     // La Cantidad de Inspiración que tiene
@@ -24,10 +29,17 @@ const Jugadores = defineTable({
 });
 
 // NPCs
-const NPCs = defineTable({
+const Personajes = defineTable({
   columns: {
     id: column.number({ primaryKey: true, autoIncrement: true }),
     name: column.text({ unique: true }),
+    age: column.number(),
+    raza: column.text({ references: () => Razas.columns.name }), // FK
+    clase: column.text({
+      references: () => Clases.columns.name,
+      optional: true,
+    }), // FK
+    work: column.text({ optional: true }),
   },
 });
 
@@ -63,5 +75,5 @@ const Trasfondos = defineTable({
 
 // DB
 export default defineDb({
-  tables: { Jugadores, Razas, Clases, Trasfondos },
+  tables: { Jugadores, Razas, Clases, Trasfondos, Personajes },
 });

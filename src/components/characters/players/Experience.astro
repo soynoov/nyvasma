@@ -10,9 +10,9 @@ const percentage = (Number(exp) / 900) * 100;
 
 <article class='grid grid-cols-10 rounded-2xl'>
   <section class='col-span-2'>
-    <h3>{raza}</h3>
+    <h3 class='text-xl'>{raza}</h3>
   </section>
-  <section class='experience col-span-6 flex justify-center items-center gap-6'>
+  <section class='experience col-span-6 flex justify-center items-center gap-4'>
     <h3>Nivel <b>2</b></h3>
     <div class='experience-bar rounded-lg'>
       <div class='experience-progress' style=`width: ${percentage}%`></div>
@@ -20,7 +20,7 @@ const percentage = (Number(exp) / 900) * 100;
     <h3><b class='text-amber-300'>{exp}</b>/900</h3>
   </section>
   <section class='col-span-2'>
-    <h3>{clase}</h3>
+    <h3 class='text-xl'>{clase}</h3>
   </section>
 </article>
 
@@ -66,5 +66,9 @@ const percentage = (Number(exp) / 900) * 100;
     border-radius: 0.5rem;
 
     height: 100%;
+  }
+  h3 {
+    font-family: var(--text);
+    font-weight: bold;
   }
 </style>
