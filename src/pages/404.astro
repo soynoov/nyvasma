@@ -1,0 +1,52 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout>
+  <article class='text-center'>
+    <section class='flex justify-center items-center flex-col'>
+      <h1 class='text-red-500'>¡Advertencia!</h1>
+      <p class='text-balance w-[12cm] text-xl'>
+        <b>¡Esto no es un simulacro!</b><br />
+        Su integridad está en grave peligro.
+        <br />
+        Le instamos a evacuar esta zona de inmediato, o el vacío podría consumirle
+        por completo.
+      </p>
+    </section>
+    <section class='absolute bottom-0 left-2'>
+      <p class='text-gray-600 font-semibold text-xl'>Error 404</p>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  /* Debug Mode */
+  /* * {
+    border: solid 1px var(--white);
+  } */
+  /* Contenedores */
+  html {
+    overflow-y: hidden;
+  }
+  article {
+    height: 95dvh;
+
+    background: url('../assets/background.jpg') no-repeat center/cover;
+  }
+  section:first-of-type {
+    height: 100%;
+  }
+  /* Titulo */
+  h1 {
+    font-size: 70px;
+    font-weight: 900;
+    font-family: var(--title);
+  }
+  /* Responsive */
+  @media (max-width: 500px) {
+    h1 {
+      font-size: 50px;
+    }
+  }
+</style>
