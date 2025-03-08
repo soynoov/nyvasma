@@ -2,8 +2,9 @@
 interface Props {
   id: Number;
   name: String;
+  level: Number;
 }
-const { id, name } = Astro.props;
+const { id, name, level } = Astro.props;
 ---
 
 <a href=`/characters/players/${id}` class='rounded-2xl'>
@@ -17,7 +18,7 @@ const { id, name } = Astro.props;
       <h2 class='text-lg'>{name}</h2>
       <div class='fill-white flex gap-2'>
         <!-- Raza -->
-        <p>{id}</p>
+        <p>{level}</p>
         <!-- Clase -->
         <!-- <p>{id}</p> -->
       </div>

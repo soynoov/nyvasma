@@ -21,7 +21,11 @@ const jugadores = await db.select().from(Jugadores);
         <!-- Aqui va una función Map que recorra la Base de Datos, y muestre tantas Cards como jugadores haya -->
         {
           jugadores.map((jugador) => (
-            <Card id={jugador.id} name={jugador.name} />
+            <Card
+              id={jugador.id}
+              name={jugador.name}
+              level={Number(jugador.xp)}
+            />
           ))
         }
       </section>

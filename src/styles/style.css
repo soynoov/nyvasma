@@ -28,6 +28,14 @@
 .shadow-hover:hover {
   box-shadow: var(--shadow-pressed);
 }
+.shadow-white {
+  box-shadow: var(--shadow-white);
+}
+.pressed-white {
+  box-shadow: var(--shadow-white-pressed);
+  background-color: var(--gray);
+  color: var(--black);
+}
 
 .pressed {
   box-shadow: var(--shadow-pressed);

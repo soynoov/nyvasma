@@ -3,13 +3,14 @@ import Layout from '@/layouts/Layout.astro';
 
 // Variables
 const campaign = 'Voidegon';
-const version = '0.0.12:0603';
+const version = '0.0.13:0803';
 ---
 
 <Layout>
   <article class='text-center'>
     <section class='flex justify-center items-center flex-col'>
       <h1>Welcome to <br /> {campaign}</h1>
+      <h3 class='text-gray-600'>II Edition</h3>
       <!-- Creative Commons -->
       <div class='flex gap-4 mt-[1cm]'>
         <svg
@@ -110,10 +111,14 @@ const version = '0.0.12:0603';
     height: 100%;
   }
   /* Titulo */
-  h1 {
+  h1,
+  h3 {
     font-size: 70px;
     font-weight: 900;
     font-family: var(--title);
+  }
+  h3 {
+    font-size: 50px;
   }
   /* Responsive */
   @media (max-width: 500px) {

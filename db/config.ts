@@ -15,8 +15,7 @@ const Jugadores = defineTable({
     raza: column.text({ references: () => Razas.columns.name }), // FK
     clase: column.text({ references: () => Clases.columns.name }), //FK
     // Experiencia (Nivel)
-    exp: column.number({ default: 0, optional: true }),
-    level: column.number({ default: 1, optional: true }),
+    xp: column.number({ default: 0, optional: true }),
     alineamiento: column.text(), //FK
     trasfondo: column.text({ references: () => Trasfondos.columns.name }), //FK
     // La Cantidad de Inspiración que tiene

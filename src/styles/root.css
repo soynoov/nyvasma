@@ -2,6 +2,7 @@
   /* Paleta de Colores */
   --black: #1c1c1c;
   --white: #e0e0e0;
+  --gray: #afafaf;
   /* Fuentes */
   --title: 'New Rocker';
   --text: 'Quicksand';
@@ -10,6 +11,8 @@
   /* Sombras y Efectos */
   --shadow: 5px 5px 5px #141414, -5px -5px 5px #242424;
   --shadow-pressed: inset 5px 5px 5px #141414, inset -5px -5px 5px #242424;
+  --shadow-white: 5px 5px 5px #b0b0b0, -5px -5px 5px #eeeeee;
+  --shadow-white-pressed: inset 5px 5px 5px #959595, inset -5px -5px 5px #c9c9c9;
   /* Tema */
   --theme: #5a247b;
   --shadow-theme: 5px 5px 5px #3f1956, -5px -5px 5px #752fa0;

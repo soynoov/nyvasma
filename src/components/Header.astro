@@ -3,6 +3,8 @@
 const characters = '/characters/characters';
 const universe = '/universe/universe';
 const tools = '/tools/tools';
+const wiki = '/wiki/wiki';
+const campaigns = '/campaigns';
 ---
 
 <header class='h-[2cm] justify-between'>
@@ -14,13 +16,13 @@ const tools = '/tools/tools';
         class='h-[1.75cm] p-2 cursor-pointer'
       />
       <div class='text-left p-4 cursor-pointer'>
-        <h1 class='text-gray-400'>Universo D&D</h1>
-        <h1 class='text-2xl'>Voidegon</h1>
+        <h1 class='text-gray-400'>NooVs in D&D</h1>
+        <h1 class='text-2xl'>Re-Voidegon</h1>
       </div>
     </a>
   </div>
   <ul class='menu justify-end'>
-    <a href=''>
+    <a href={campaigns}>
       <li>Campañas</li>
     </a>
     <a href={characters}>
@@ -29,10 +31,10 @@ const tools = '/tools/tools';
     <a href={universe}>
       <li>Universo</li>
     </a>
-    <a href=''>
+    <a href={wiki}>
       <li>Enciclopedia</li>
     </a>
-    <a href={'/tools/life-calculator'}>
+    <a href={tools}>
       <li>Herramientas</li>
     </a>
   </ul>

@@ -14,3 +14,4 @@ console.log(getComp(13)); // 5
 console.log(getComp(17)); // 6
 
 // Ahora con las Stats
+export function getCompStat(stat: number) {}

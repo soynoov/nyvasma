@@ -39,8 +39,7 @@ export default async function seed() {
       weight: 72,
       raza: 'Aasimar',
       clase: 'Mago',
-      exp: 435,
-      level: 2,
+      xp: 435,
       alineamiento: 'Caótico Malo',
       trasfondo: 'Artista',
       stats: {

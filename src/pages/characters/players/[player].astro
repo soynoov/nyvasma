@@ -6,12 +6,13 @@ import Portrait from '@/components/characters/Portrait.astro';
 import Experience from '@/components/characters/players/Experience.astro';
 import Stats from '@/components/characters/Stats.astro';
 import Speed from '@/components/characters/Speed.astro';
-import Iniciative from '@/components/characters/mini/Iniciative.astro';
-import Inspiration from '@/components/characters/mini/Inspiration.astro';
-import Health from '@/components/characters/mini/Health.astro';
-import Comp from '@/components/characters/mini/Comp.astro';
+import Iniciative from '@/components/characters/players/mini/Iniciative.astro';
+import Inspiration from '@/components/characters/players/mini/Inspiration.astro';
+import Health from '@/components/characters/Health.astro';
+import Comp from '@/components/characters/players/mini/Comp.astro';
 // DB
 import { db, eq, Jugadores, Razas, Clases } from 'astro:db';
+import Shield from '@/components/characters/players/Shield.astro';
 
 export async function getStaticPaths() {
   const jugadores = await db.select().from(Jugadores);
@@ -39,31 +40,34 @@ const classChosen = clase[0];
 ---
 
 <Layout>
+  <hr id='info' class='invisible' />
   <Banner text={chosen.name} />
   <main class='main h-[200vh]'>
     <article
-      class='tabs flex justify-around gap-8 mb-4 p-4 rounded-2xl text-2xl sticky top-[2.3cm]'
+      class='tabs flex justify-around gap-8 mb-4 p-4 rounded-2xl sticky top-[2.3cm]'
     >
-      <a href='#'>
+      <a href='#info'>
         <h2>Atributos y Habilidades</h2>
       </a>
-      <a>
+      <a href=''>
         <h2>Inventario</h2>
       </a>
-      <a>
+      <a href=''>
         <h2>Historia</h2>
       </a>
     </article>
     <!-- MAIN -->
-    <article class='grid grid-cols-8 gap-4'>
-      <section class='col-span-8 uppercase'>
+    <article class='grid grid-cols-10 gap-4'>
+      <section class='col-span-10 row-span-1 uppercase'>
         <Experience
-          exp={Number(chosen.exp)}
-          raza={chosen.raza}
-          clase={chosen.clase}
+          exp={Number(chosen.xp)}
+          race={chosen.raza}
+          role={chosen.clase}
         />
       </section>
-      <!-- Velocidad -->
+      <section class='col-span-1 row-span-1'>
+        <Inspiration />
+      </section>
       <section class='col-span-1 row-span-1'>
         <Comp />
       </section>
@@ -75,22 +79,19 @@ const classChosen = clase[0];
         <Portrait name={chosen.name.split(' ')[0]} />
       </section>
       <!-- Estadisticas -->
-      <section class='col-span-2 row-span-4'>
+      <section class='col-span-3 row-span-4'>
         <Stats />
       </section>
-      <section class='col-span-2 row-span-1'>
-        <Speed speed={raceChosen.pies} />
+      <section class='col-span-3 row-span-1'>
+        <Speed feets={raceChosen.pies} fly={60} />
       </section>
-      <section class='col-span-1 row-span-1'>
-        <Inspiration />
+      <section class='col-span-3 row-span-1'>
+        <Shield />
       </section>
-      <section class='col-span-1 row-span-1'>
-        <Iniciative />
+      <section class='col-span-3 row-span-1'>
+        <Speed feets={raceChosen.pies} />
       </section>
-      <section class='col-span-2 row-span-1'>
-        <Speed speed={raceChosen.pies} />
-      </section>
-      <section class='col-span-8 row-span-1'>
+      <section class='col-span-10 row-span-1'>
         <Health hit_dice={classChosen.dados_golpe} />
       </section>
     </article>
