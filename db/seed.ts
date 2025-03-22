@@ -51,5 +51,43 @@ export default async function seed() {
         car: 10,
       },
     },
+    {
+      nombre: 'Aus',
+      raza: 'Undead',
+      clase: 'Guerrero',
+      trasfondo: 'Soldado',
+      alineamiento: ['Caótico', 'Neutral'],
+      experiencia: 23000,
+      estadisticas: {
+        fuerza: 24,
+        destreza: 12,
+        constitucion: 18,
+        inteligencia: 12,
+        sabiduria: 11,
+        carisma: 5,
+      },
+      armas: ['Lanza de Caballería', 'Hacha'],
+      mochila: {
+        monedero: {
+          pc: 2,
+          pp: 1,
+          pe: 0,
+          po: 0,
+          ppt: 0,
+        },
+        objetos: {
+          comun: [
+            'Cuerno de Minotauro',
+            'Dados de Hueso',
+            'Ropa Común',
+            'Calabaza',
+          ],
+          poco_comun: ['Mapa', 'Martillo'],
+          raro: [],
+          epico: [],
+          legendario: ['Hexcore'],
+        },
+      },
+    },
   ]);
 }
