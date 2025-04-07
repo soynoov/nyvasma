@@ -8,22 +8,24 @@ const Jugadores = defineTable({
   columns: {
     id: column.number({ primaryKey: true, autoIncrement: true }),
     // LORE
-    name: column.text({ unique: true }),
-    age: column.number(),
-    height: column.number(),
-    weight: column.number(),
-    raza: column.text({ references: () => Razas.columns.name }), // FK
-    clase: column.text({ references: () => Clases.columns.name }), //FK
+    nombre: column.text({ unique: true }),
+    edad: column.number({ optional: true }),
+    altura: column.number({ optional: true }),
+    peso: column.number({ optional: true }),
+    raza: column.text({ references: () => Razas.columns.nombre }), // FK
+    clase: column.text({ references: () => Clases.columns.nombre }), //FK
     // Experiencia (Nivel)
-    xp: column.number({ default: 0, optional: true }),
-    alineamiento: column.text(), //FK
-    trasfondo: column.text({ references: () => Trasfondos.columns.name }), //FK
+    experiencia: column.number({ default: 0, optional: true }),
+    alineamiento: column.json(), //FK
+    trasfondo: column.text({ references: () => Trasfondos.columns.nombre }), //FK
     // La Cantidad de Inspiración que tiene
     inspiracion: column.number({ optional: true }),
     // Estadisticas
-    stats: column.json(), // FUE, DES, CON, INT, SAB, CAR
+    estadisticas: column.json(), // FUE, DES, CON, INT, SAB, CAR
     //Tabla de Salud
-    health_table: column.json({ optional: true }), // Los Resultados que le han salido en el Dado de Salud al subir de Nivel
+    tabla_vida: column.json({ optional: true }), // Los Resultados que le han salido en el Dado de Salud al subir de Nivel
+    armas: column.json({ optional: true }), // Array con el nombre de las Armas (Armas es un Tabla independiente)
+    mochila: column.json({ optional: true }),
   },
 });
 
@@ -33,9 +35,9 @@ const Personajes = defineTable({
     id: column.number({ primaryKey: true, autoIncrement: true }),
     name: column.text({ unique: true }),
     age: column.number(),
-    raza: column.text({ references: () => Razas.columns.name }), // FK
+    raza: column.text({ references: () => Razas.columns.nombre }), // FK
     clase: column.text({
-      references: () => Clases.columns.name,
+      references: () => Clases.columns.nombre,
       optional: true,
     }), // FK
     work: column.text({ optional: true }),
@@ -46,7 +48,7 @@ const Personajes = defineTable({
 const Razas = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
-    name: column.text({ unique: true }),
+    nombre: column.text({ unique: true }),
     pies: column.number({ default: 30 }),
     volar: column.number({ optional: true, default: 0 }),
     excavar: column.number({ optional: true, default: 0 }),
@@ -57,7 +59,7 @@ const Razas = defineTable({
 const Clases = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
-    name: column.text({ unique: true }),
+    nombre: column.text({ unique: true }),
     dados_golpe: column.number(),
     competencias: column.json(),
   },
@@ -67,12 +69,20 @@ const Clases = defineTable({
 const Trasfondos = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
-    name: column.text({ unique: true }),
+    nombre: column.text({ unique: true }),
     competencias: column.json(),
+  },
+});
+
+// -- Armas
+const Armas = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    nombre: column.text({ unique: true }),
   },
 });
 
 // DB
 export default defineDb({
-  tables: { Jugadores, Razas, Clases, Trasfondos, Personajes },
+  tables: { Jugadores, Personajes, Razas, Clases, Trasfondos },
 });

@@ -23,8 +23,8 @@ const jugadores = await db.select().from(Jugadores);
           jugadores.map((jugador) => (
             <Card
               id={jugador.id}
-              name={jugador.name}
-              level={Number(jugador.xp)}
+              name={jugador.nombre}
+              level={Number(jugador.experiencia)}
             />
           ))
         }

@@ -29,19 +29,19 @@ const jugador = await db
   .where(eq(Jugadores.id, player));
 const chosen = jugador[0]; // Elegimos el Primero
 
-const raza = await db.select().from(Razas).where(eq(Razas.name, chosen.raza));
+const raza = await db.select().from(Razas).where(eq(Razas.nombre, chosen.raza));
 const raceChosen = raza[0];
 
 const clase = await db
   .select()
   .from(Clases)
-  .where(eq(Clases.name, chosen.clase));
+  .where(eq(Clases.nombre, chosen.clase));
 const classChosen = clase[0];
 ---
 
 <Layout>
   <hr id='info' class='invisible' />
-  <Banner text={chosen.name} />
+  <Banner text={chosen.nombre} />
   <main class='main h-[200vh]'>
     <article
       class='tabs flex justify-around gap-8 mb-4 p-4 rounded-2xl sticky top-[2.3cm]'
@@ -60,7 +60,7 @@ const classChosen = clase[0];
     <article class='grid grid-cols-10 gap-4'>
       <section class='col-span-10 row-span-1 uppercase'>
         <Experience
-          exp={Number(chosen.xp)}
+          exp={Number(chosen.experiencia)}
           race={chosen.raza}
           role={chosen.clase}
         />
@@ -76,7 +76,7 @@ const classChosen = clase[0];
       </section>
       <!-- Imagen -->
       <section class='col-span-4 row-span-4'>
-        <Portrait name={chosen.name.split(' ')[0]} />
+        <Portrait name={chosen.nombre.split(' ')[0]} />
       </section>
       <!-- Estadisticas -->
       <section class='col-span-3 row-span-4'>

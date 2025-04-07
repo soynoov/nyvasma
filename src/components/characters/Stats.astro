@@ -1,66 +1,231 @@
 ---
+import {
+  getStats,
+  getCompStat,
+  getComp,
+  getTotalCompStat,
+  sum,
+} from '@/ts/get-stats'; // Recoger las Stats del personaje
+import { getId, getChosenClass } from '@/ts/get-id';
+import { getLevel } from '@/ts/get-level';
 
+const id = getId(Astro.url.pathname);
+const level = await getLevel(id);
+const chosenClass = await getChosenClass(id);
+const total = await getTotalCompStat(chosenClass.competencias, level.nivel);
+
+interface Stats {
+  fuerza: number;
+  destreza: number;
+  constitucion: number;
+}
+
+// Estadisticas
+const stats = (await getStats(id)) as {
+  base: {
+    fuerza: number;
+    destreza: number;
+    constitucion: number;
+    inteligencia: number;
+    sabiduria: number;
+    carisma: number;
+  };
+  adicional: {
+    fuerza: number[];
+    destreza: number[];
+    constitucion: number[];
+    inteligencia: number[];
+    sabiduria: number[];
+    carisma: number[];
+  };
+};
+
+// Estadisticas Base
+const fuerza = stats.base.fuerza;
+const destreza = stats.base.destreza;
+const constitucion = stats.base.constitucion;
+const inteligencia = stats.base.inteligencia;
+const sabiduria = stats.base.sabiduria;
+const carisma = stats.base.carisma;
+// Estadisticas Adicionales
+const fuerzaAdicional = stats.adicional?.fuerza;
+const destrezaAdicional = stats.adicional?.destreza;
+const constitucionAdicional = stats.adicional?.constitucion;
+const inteligenciaAdicional = stats.adicional?.inteligencia;
+const sabiduriaAdicional = stats.adicional?.sabiduria;
+const carismaAdicional = stats.adicional?.carisma;
+// Estadisticas Totales
+const fuerzaTotal = fuerza + sum(fuerzaAdicional);
+const destrezaTotal = destreza + sum(destrezaAdicional);
+const constitucionTotal = constitucion + sum(constitucionAdicional);
+const inteligenciaTotal = inteligencia + sum(inteligenciaAdicional);
+const sabiduriaTotal = sabiduria + sum(sabiduriaAdicional);
+const carismaTotal = carisma + sum(carismaAdicional);
+
+// Competencias Totales
+let compFuerza = getCompStat(fuerzaTotal);
+let sumaCompFue = Number(total.fuerza) + Number(compFuerza);
+let compDestreza = getCompStat(destrezaTotal);
+let sumaCompDes = Number(total.destreza) + Number(compDestreza);
+let compConstitucion = getCompStat(constitucionTotal);
+let sumaCompCon = Number(total.constitucion) + Number(compConstitucion);
+let compInteligencia = getCompStat(inteligenciaTotal);
+let sumaCompInt = Number(total.inteligencia) + Number(compInteligencia);
+let compSabiduria = getCompStat(sabiduriaTotal);
+let sumaCompSab = Number(total.sabiduria) + Number(compSabiduria);
+let compCarisma = getCompStat(carismaTotal);
+let sumaCompCar = Number(total.carisma) + Number(compCarisma);
+let sumaStats =
+  fuerza + destreza + constitucion + inteligencia + sabiduria + carisma;
+
+if (sumaStats !== 60) {
+  console.log('Las Stats asignadas no suman 60. Suma actual: ' + sumaStats);
+}
 ---
 
 <article class='flex flex-col gap-4 rounded-2xl p-4 h-full'>
   <section>
     <div>
       <h3 class='fue'>Fuerza</h3>
-      <p>10</p>
+      <p style={fuerzaAdicional ? '' : 'color: var(--white)'}>
+        {fuerza}
+        {
+          fuerzaAdicional && (
+            <>
+              <span>+ {fuerzaAdicional.join(' + ')}</span>
+              <span class='indice'>=</span>
+              <span class='total'>{fuerzaTotal}</span>
+            </>
+          )
+        }
+      </p>
     </div>
     <div>
-      <p>(+3) + (+2)</p>
-      <p>+5</p>
+      <p>
+        {'(' + getCompStat(fuerzaTotal) + ')'}
+        {total.fuerza ? '+ (+' + total.fuerza + ')' : ''}
+      </p>
+      <p class='total'>{sumaCompFue > 0 ? '(+' : '('}{sumaCompFue + ')'}</p>
     </div>
   </section>
   <section>
     <div>
       <h3 class='des'>Destreza</h3>
-      <p>10</p>
+      <p style={destrezaAdicional ? '' : 'color: var(--white)'}>
+        {destreza}
+        {
+          destrezaAdicional && (
+            <>
+              <span>+ {destrezaAdicional.join(' + ')}</span>
+              <span class='indice'>=</span>
+              <span class='total'>{destrezaTotal}</span>
+            </>
+          )
+        }
+      </p>
     </div>
     <div>
-      <p>(+3) + (+2)</p>
-      <p>+5</p>
+      <p>
+        {'(' + getCompStat(destrezaTotal) + ')'}
+        {total.destreza ? '+ (+' + total.destreza + ')' : ''}
+      </p>
+      <p class='total'>{sumaCompDes > 0 ? '(+' : '('}{sumaCompDes + ')'}</p>
     </div>
   </section>
   <section>
     <div>
       <h3 class='con'>Constitucion</h3>
-      <p>10</p>
+      <p style={constitucionAdicional ? '' : 'color: var(--white)'}>
+        {constitucion}
+        {
+          constitucionAdicional && (
+            <>
+              <span>+ {constitucionAdicional.join(' + ')}</span>
+              <span class='indice'>=</span>
+              <span class='total'>{constitucionTotal}</span>
+            </>
+          )
+        }
+      </p>
     </div>
     <div>
-      <p>(+3) + (+2)</p>
-      <p>+5</p>
+      <p>
+        {'(' + getCompStat(constitucionTotal) + ')'}
+        {total.constitucion ? '+ (+' + total.constitucion + ')' : ''}
+      </p>
+      <p class='total'>{sumaCompCon > 0 ? '(+' : '('}{sumaCompCon + ')'}</p>
     </div>
   </section>
   <section>
     <div>
       <h3 class='int'>Inteligencia</h3>
-      <p>10</p>
+      <p style={inteligenciaAdicional ? '' : 'color: var(--white)'}>
+        {inteligencia}
+        {
+          inteligenciaAdicional && (
+            <>
+              <span>+ {inteligenciaAdicional.join(' + ')}</span>
+              <span class='indice'>=</span>
+              <span class='total'>{inteligenciaTotal}</span>
+            </>
+          )
+        }
+      </p>
     </div>
     <div>
-      <p>(+3) + (+2)</p>
-      <p>+5</p>
+      <p>
+        {'(' + getCompStat(inteligenciaTotal) + ')'}
+        {total.inteligencia ? '+ (+' + total.inteligencia + ')' : ''}
+      </p>
+      <p class='total'>{sumaCompInt > 0 ? '(+' : '('}{sumaCompInt + ')'}</p>
     </div>
   </section>
   <section>
     <div>
       <h3 class='sab'>Sabiduria</h3>
-      <p>10</p>
+      <p style={sabiduriaAdicional ? '' : 'color: var(--white)'}>
+        {sabiduria}
+        {
+          sabiduriaAdicional && (
+            <>
+              <span>+ {sabiduriaAdicional.join(' + ')}</span>
+              <span class='indice'>=</span>
+              <span class='total'>{sabiduriaTotal}</span>
+            </>
+          )
+        }
+      </p>
     </div>
     <div>
-      <p>(+3) + (+2)</p>
-      <p>+5</p>
+      <p>
+        {'(' + getCompStat(sabiduriaTotal) + ')'}
+        {total.sabiduria ? '+ (+' + total.sabiduria + ')' : ''}
+      </p>
+      <p class='total'>{sumaCompSab > 0 ? '(+' : '('}{sumaCompSab + ')'}</p>
     </div>
   </section>
   <section>
     <div>
       <h3 class='car'>Carisma</h3>
-      <p>10</p>
+      <p style={carismaAdicional ? '' : 'color: var(--white)'}>
+        {carisma}
+        {
+          carismaAdicional && (
+            <>
+              <span>+ {carismaAdicional.join(' + ')}</span>
+              <span class='indice'>=</span>
+              <span class='total'>{carismaTotal}</span>
+            </>
+          )
+        }
+      </p>
     </div>
     <div>
-      <p>(+3) + (+2)</p>
-      <p>+5</p>
+      <p>
+        {'(' + getCompStat(carismaTotal) + ')'}
+        {total.carisma ? '+ (+' + total.carisma + ')' : ''}
+      </p>
+      <p class='total'>{sumaCompCar > 0 ? '(+' : '('}{sumaCompCar + ')'}</p>
     </div>
   </section>
 </article>
@@ -89,9 +254,22 @@
     justify-content: space-around;
   }
   h3 {
-    font-size: 1.5rem;
+    font-size: 25px;
     font-weight: bold;
     text-transform: uppercase;
+  }
+  span {
+    color: var(--des);
+    font-size: 15px;
+  }
+  .total {
+    color: var(--white);
+    font-size: 25px;
+  }
+  p,
+  .indice {
+    color: #666;
+    font-size: 20px;
   }
   div {
     display: flex;

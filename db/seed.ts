@@ -4,51 +4,78 @@ import { db, Jugadores, Razas, Clases, Trasfondos } from 'astro:db';
 export default async function seed() {
   await db
     .insert(Razas)
-    .values([{ name: 'Tiefling' }, { name: 'Aasimar', volar: 60 }]);
+    .values([
+      { nombre: 'Tiefling' },
+      { nombre: 'Aasimar', volar: 60 },
+      { nombre: 'Undead' },
+      { nombre: 'Kenku' },
+    ]);
+
   await db.insert(Clases).values([
-    { name: 'Mago', dados_golpe: 6, competencias: [] },
-    { name: 'Bardo', dados_golpe: 8, competencias: ['DES', 'CAR'] },
+    {
+      nombre: 'Mago',
+      dados_golpe: 6,
+      competencias: ['inteligencia', 'sabiduria'],
+    },
+    { nombre: 'Bardo', dados_golpe: 8, competencias: ['destreza', 'carisma'] },
+    {
+      nombre: 'Guerrero',
+      dados_golpe: 10,
+      competencias: ['fuerza', 'constitucion'],
+    },
+    {
+      nombre: 'Brujo',
+      dados_golpe: 8,
+      competencias: ['fuerza', 'constitucion'],
+    },
   ]);
-  await db
-    .insert(Trasfondos)
-    .values([{ name: 'Artista', competencias: ['Historia', 'Medicina'] }]);
+
+  await db.insert(Trasfondos).values([
+    { nombre: 'Artista', competencias: ['Historia', 'Medicina'] },
+    { nombre: 'Soldado', competencias: ['Historia', 'Medicina'] },
+    { nombre: 'Huerfano', competencias: ['Historia', 'Medicina'] },
+  ]);
 
   await db.insert(Jugadores).values([
     {
-      name: 'Lirael Lira',
-      age: 20,
+      nombre: 'Lirael Lira',
+      edad: 20,
       raza: 'Tiefling',
-      height: 1.68,
-      weight: 53,
+      altura: 1.68,
+      peso: 53,
       clase: 'Bardo',
       alineamiento: 'Caótico Bueno',
       trasfondo: 'Artista',
-      stats: {
-        fue: 10,
-        des: 14,
-        con: 12,
-        int: 14,
-        sab: 10,
-        car: 16,
+      estadisticas: {
+        base: {
+          fuerza: 6,
+          destreza: 14,
+          constitucion: 12,
+          inteligencia: 14,
+          sabiduria: 0,
+          carisma: 16,
+        },
       },
     },
     {
-      name: 'Nyliss Avacynn',
-      age: 83,
-      height: 1.79,
-      weight: 72,
+      nombre: 'Nyliss Avacynn',
+      edad: 83,
+      altura: 1.79,
+      peso: 72,
       raza: 'Aasimar',
       clase: 'Mago',
-      xp: 435,
+      experiencia: 435,
       alineamiento: 'Caótico Malo',
       trasfondo: 'Artista',
-      stats: {
-        fue: 10,
-        des: 16,
-        con: 10,
-        int: 16,
-        sab: 14,
-        car: 10,
+      estadisticas: {
+        base: {
+          fuerza: 10,
+          destreza: 16,
+          constitucion: 10,
+          inteligencia: 16,
+          sabiduria: 14,
+          carisma: 10,
+        },
       },
     },
     {
@@ -59,12 +86,19 @@ export default async function seed() {
       alineamiento: ['Caótico', 'Neutral'],
       experiencia: 23000,
       estadisticas: {
-        fuerza: 24,
-        destreza: 12,
-        constitucion: 18,
-        inteligencia: 12,
-        sabiduria: 11,
-        carisma: 5,
+        base: {
+          fuerza: 20,
+          destreza: 10,
+          constitucion: 13,
+          inteligencia: 12,
+          sabiduria: 12,
+          carisma: 5,
+        },
+        adicional: {
+          fuerza: [1],
+          destreza: [1, 2],
+          constitucion: [2, 1],
+        },
       },
       armas: ['Lanza de Caballería', 'Hacha'],
       mochila: {
@@ -86,6 +120,24 @@ export default async function seed() {
           raro: [],
           epico: [],
           legendario: ['Hexcore'],
+        },
+      },
+    },
+    {
+      nombre: 'Elgrim',
+      raza: 'Kenku',
+      clase: 'Brujo',
+      trasfondo: 'Huerfano',
+      alineamiento: ['Neutral', 'Malvado'],
+      experiencia: 3000000,
+      estadisticas: {
+        base: {
+          fuerza: 50,
+          destreza: 50,
+          constitucion: 50,
+          inteligencia: 50,
+          sabiduria: 50,
+          carisma: 50,
         },
       },
     },

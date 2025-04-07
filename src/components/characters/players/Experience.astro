@@ -1,18 +1,17 @@
 ---
-interface Props {
-  exp: Number;
-  race: String;
-  role: String;
-}
-const { exp, race, role } = Astro.props;
+import { getChosen, getId } from '@/ts/get-id';
+import { getLevel } from '@/ts/get-level';
 
-import { calculateLevel } from '@/ts/level-calculator';
-const nivel = calculateLevel(Number(exp));
+const id = getId(Astro.url.pathname);
+const nivel = await getLevel(id);
+const chosen = await getChosen(id);
+const raza = chosen.raza;
+const clase = chosen.clase;
 ---
 
 <article class='grid grid-cols-10 rounded-2xl'>
-  <a href=`/wiki/${race}` class='col-span-2'>
-    <h3>{race}</h3>
+  <a href=`/wiki/${raza}` class='col-span-2'>
+    <h3>{raza}</h3>
   </a>
   <section class='experience col-span-6 flex justify-center items-center gap-2'>
     <h3>Nivel <b>{nivel.nivel}</b></h3>
@@ -24,13 +23,13 @@ const nivel = calculateLevel(Number(exp));
       </div>
     </div>
     <h3>
-      <b class='text-amber-400'>{exp.toLocaleString()}</b>/{
+      <b class='text-amber-400'>{chosen.experiencia?.toLocaleString()}</b>/{
         nivel.meta.toLocaleString()
       }
     </h3>
   </section>
-  <a href=`/wiki/${role}` class='col-span-2'>
-    <h3>{role}</h3>
+  <a href=`/wiki/${clase}` class='col-span-2'>
+    <h3>{clase}</h3>
   </a>
 </article>
 

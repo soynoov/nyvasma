@@ -1,12 +1,10 @@
 ---
-import { getComp } from '@/ts/comp-calculator';
+import { getComp } from '@/ts/get-stats';
+import { getLevel } from '@/ts/get-level';
+import { getId } from '@/ts/get-id';
 
-interface Props {
-  level?: number;
-}
-
-const { level = 1 } = Astro.props;
-const comp = getComp(level);
+const level = await getLevel(getId(Astro.url.pathname));
+console.log(level);
 ---
 
 <article class='h-full shadow p-4 number'>
@@ -15,6 +13,6 @@ const comp = getComp(level);
   >
     <h6 class='text-xl uppercase font-bold'>Comp</h6>
     <hr class='w-full' />
-    <h3 class='text-4xl'>{'+' + comp}</h3>
+    <h3 class='text-4xl'>{'+' + getComp(level.nivel)}</h3>
   </section>
 </article>
