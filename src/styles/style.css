@@ -36,6 +36,14 @@
   background-color: var(--gray);
   color: var(--black);
 }
+.shadow-theme {
+  box-shadow: var(--shadow-theme);
+  border-radius: 1rem;
+}
+.shadow-theme-hover:hover {
+  box-shadow: var(--shadow-pressed-theme);
+  background-color: var(--theme);
+}
 
 .pressed {
   box-shadow: var(--shadow-pressed);
@@ -46,13 +54,13 @@
   transition: all 300ms ease;
 }
 
-.shadow-animation {
-  animation: shadowAnimationReverse 300ms;
+.shadow-theme-animation {
+  animation: shadowAnimationThemeReverse 300ms;
 }
-.shadow-animation:hover {
-  animation: shadowAnimation 300ms;
+.shadow-theme-animation:hover {
+  animation: shadowAnimationTheme 300ms;
 }
-@keyframes shadowAnimation {
+@keyframes shadowAnimationTheme {
   0% {
     box-shadow: var(--shadow);
   }
@@ -60,12 +68,12 @@
     box-shadow: none;
   }
   100% {
-    box-shadow: var(--shadow-pressed);
+    box-shadow: var(--shadow-pressed-theme);
   }
 }
-@keyframes shadowAnimationReverse {
+@keyframes shadowAnimationThemeReverse {
   0% {
-    box-shadow: var(--shadow-pressed);
+    box-shadow: var(--shadow-pressed-theme);
   }
   50% {
     box-shadow: none;

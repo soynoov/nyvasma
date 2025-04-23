@@ -3,14 +3,14 @@ import Layout from '@/layouts/Layout.astro';
 
 // Variables
 const campaign = 'Nyvasma';
-const version = '0.0.15:0704';
+const version = '0.0.16:2304';
 ---
 
 <Layout>
   <article class='text-center'>
     <section class='flex justify-center items-center flex-col'>
       <h1>Welcome to <br /> {campaign}</h1>
-      <h3 class='text-gray-600'>II Edition</h3>
+      <h3>II Edition</h3>
       <!-- Creative Commons -->
       <div class='flex gap-4 mt-[1cm]'>
         <svg
@@ -88,7 +88,7 @@ const version = '0.0.15:0704';
       </div>
     </section>
     <section class='absolute bottom-0 left-2'>
-      <p class='text-gray-600 font-semibold text-lg'>v_{version}</p>
+      <p class='font-semibold text-lg'>v_{version}</p>
     </section>
   </article>
 </Layout>
@@ -119,6 +119,10 @@ const version = '0.0.15:0704';
   }
   h3 {
     font-size: 50px;
+    color: var(--gray);
+  }
+  p {
+    color: var(--gray);
   }
   /* Responsive */
   @media (max-width: 500px) {

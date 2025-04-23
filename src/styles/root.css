@@ -9,14 +9,16 @@
   --handwritten: 'Caveat';
   --number: 'Dangrek';
   /* Sombras y Efectos */
-  --shadow: 5px 5px 5px #141414, -5px -5px 5px #242424;
-  --shadow-pressed: inset 5px 5px 5px #141414, inset -5px -5px 5px #242424;
-  --shadow-white: 5px 5px 5px #b0b0b0, -5px -5px 5px #eeeeee;
-  --shadow-white-pressed: inset 5px 5px 5px #959595, inset -5px -5px 5px #c9c9c9;
+  --shadow: 5px 5px 10px #141414, -5px -5px 10px #242424;
+  --shadow-pressed: inset 5px 5px 10px #141414, inset -5px -5px 10px #242424;
+  --shadow-white: 5px 5px 10px #9d9d9d, -5px -5px 10px #ffffff;
+  --shadow-white-pressed: inset 5px 5px 10px #9d9d9d,
+    inset -5px -5px 10px #ffffff;
   /* Tema */
-  --theme: #5a247b;
-  --shadow-theme: 5px 5px 5px #3f1956, -5px -5px 5px #752fa0;
-  --shadow-pressed-theme: inset 5px 5px 5px #3f1956, inset -5px -5px 5px #752fa0;
+  --theme: #75773c;
+  --shadow-theme: 5px 5px 10px #52532a, -5px -5px 10px #989b4e;
+  --shadow-pressed-theme: inset 5px 5px 10px #52532a,
+    inset -5px -5px 10px #989b4e;
   /* Color Stats */
   --fue: #ac1d1b;
   --des: #ffbb00;

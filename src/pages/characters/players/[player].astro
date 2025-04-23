@@ -13,6 +13,8 @@ import Comp from '@/components/characters/players/mini/Comp.astro';
 // DB
 import { db, eq, Jugadores, Razas, Clases } from 'astro:db';
 import Shield from '@/components/characters/players/Shield.astro';
+import HitDice from '@/components/characters/HitDice.astro';
+import HealthTable from '@/components/characters/players/HealthTable.astro';
 
 export async function getStaticPaths() {
   const jugadores = await db.select().from(Jugadores);
@@ -40,16 +42,14 @@ const classChosen = clase[0];
 ---
 
 <Layout>
-  <hr id='info' class='invisible' />
   <Banner text={chosen.nombre} />
+  <hr id='info' class='invisible absolute -mt-[2cm] z-0' />
   <main class='main h-[200vh]'>
-    <article
-      class='tabs flex justify-around gap-8 mb-4 p-4 rounded-2xl sticky top-[2.3cm]'
-    >
+    <article class='tabs flex justify-around gap-8 mb-4 p-4 sticky top-[2cm]'>
       <a href='#info'>
         <h2>Atributos y Habilidades</h2>
       </a>
-      <a href=''>
+      <a href='#backpack'>
         <h2>Inventario</h2>
       </a>
       <a href=''>
@@ -57,21 +57,18 @@ const classChosen = clase[0];
       </a>
     </article>
     <!-- MAIN -->
-    <article class='grid grid-cols-10 gap-4'>
-      <section class='col-span-10 row-span-1 uppercase'>
+    <article class='grid grid-cols-12 gap-4'>
+      <section class='col-span-12 row-span-1 uppercase'>
         <Experience
           exp={Number(chosen.experiencia)}
           race={chosen.raza}
           role={chosen.clase}
         />
       </section>
-      <section class='col-span-1 row-span-1'>
-        <Inspiration />
-      </section>
-      <section class='col-span-1 row-span-1'>
+      <section class='col-span-2 row-span-1'>
         <Comp />
       </section>
-      <section class='col-span-1 row-span-1'>
+      <section class='col-span-2 row-span-1'>
         <Iniciative />
       </section>
       <!-- Imagen -->
@@ -79,20 +76,26 @@ const classChosen = clase[0];
         <Portrait name={chosen.nombre.split(' ')[0]} />
       </section>
       <!-- Estadisticas -->
-      <section class='col-span-3 row-span-4'>
+      <section class='col-span-4 row-span-4'>
         <Stats />
       </section>
-      <section class='col-span-3 row-span-1'>
+      <section class='col-span-4 row-span-1'>
         <Speed feets={raceChosen.pies} fly={60} />
       </section>
-      <section class='col-span-3 row-span-1'>
+      <section class='col-span-4 row-span-1'>
         <Shield />
       </section>
-      <section class='col-span-3 row-span-1'>
-        <Speed feets={raceChosen.pies} />
+      <section class='col-span-2 row-span-1'>
+        <Inspiration />
       </section>
-      <section class='col-span-10 row-span-1'>
-        <Health hit_dice={classChosen.dados_golpe} />
+      <section class='col-span-2 row-span-1'>
+        <HitDice />
+      </section>
+      <section class='col-span-12 row-span-1'>
+        <Health />
+      </section>
+      <section class='col-span-12'>
+        <HealthTable />
       </section>
     </article>
   </main>
@@ -104,19 +107,18 @@ const classChosen = clase[0];
   } */
     /* Sections */
     .tabs {
-      box-shadow: var(--shadow);
-      background: url(/src/assets/resources/noise.svg);
+      background-color: var(--black);
+      border-radius: 0.5rem;
     }
     .tabs a {
       box-shadow: var(--shadow);
-      border-radius: 0.5rem;
       padding: 1rem;
       width: 100%;
 
       font-family: var(--title);
+      text-transform: uppercase;
     }
     .tabs a:hover {
-      background: url(/src/assets/resources/noise_theme.svg);
       box-shadow: var(--shadow-pressed-theme);
       background-color: var(--theme);
     }

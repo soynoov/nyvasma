@@ -9,6 +9,7 @@ export default async function seed() {
       { nombre: 'Aasimar', volar: 60 },
       { nombre: 'Undead' },
       { nombre: 'Kenku' },
+      { nombre: 'Humano' },
     ]);
 
   await db.insert(Clases).values([
@@ -28,12 +29,18 @@ export default async function seed() {
       dados_golpe: 8,
       competencias: ['fuerza', 'constitucion'],
     },
+    {
+      nombre: 'Picaro',
+      dados_golpe: 8,
+      competencias: ['destreza', 'inteligencia'],
+    },
   ]);
 
   await db.insert(Trasfondos).values([
-    { nombre: 'Artista', competencias: ['Historia', 'Medicina'] },
-    { nombre: 'Soldado', competencias: ['Historia', 'Medicina'] },
-    { nombre: 'Huerfano', competencias: ['Historia', 'Medicina'] },
+    { nombre: 'Artista', competencias: ['Acrobacias', 'Interpretacion'] },
+    { nombre: 'Soldado', competencias: ['Atletismo', 'Intimidacion'] },
+    { nombre: 'Huerfano', competencias: ['Juego de Manos', 'Sigilo'] },
+    { nombre: 'Noble', competencias: ['Historia', 'Persuasion'] },
   ]);
 
   await db.insert(Jugadores).values([
@@ -46,11 +53,12 @@ export default async function seed() {
       clase: 'Bardo',
       alineamiento: 'Caótico Bueno',
       trasfondo: 'Artista',
+      currentHP: 1,
       estadisticas: {
         base: {
           fuerza: 6,
           destreza: 14,
-          constitucion: 12,
+          constitucion: 0,
           inteligencia: 14,
           sabiduria: 0,
           carisma: 16,
@@ -138,6 +146,28 @@ export default async function seed() {
           inteligencia: 50,
           sabiduria: 50,
           carisma: 50,
+        },
+      },
+    },
+    {
+      nombre: 'Vashir',
+      raza: 'Humano',
+      clase: 'Picaro',
+      trasfondo: 'Soldado',
+      alineamiento: ['Legal', 'Neutral'],
+      estadisticas: {
+        base: {
+          fuerza: 10,
+          destreza: 16,
+          constitucion: 10,
+          inteligencia: 13,
+          sabiduria: 8,
+          carisma: 8,
+        },
+        adicional: {
+          destreza: [1],
+          constitucion: [2],
+          inteligencia: [1],
         },
       },
     },

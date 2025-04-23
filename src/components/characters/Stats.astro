@@ -4,6 +4,7 @@ import {
   getCompStat,
   getComp,
   getTotalCompStat,
+  getStatModifier,
   sum,
 } from '@/ts/get-stats'; // Recoger las Stats del personaje
 import { getId, getChosenClass } from '@/ts/get-id';
@@ -12,13 +13,11 @@ import { getLevel } from '@/ts/get-level';
 const id = getId(Astro.url.pathname);
 const level = await getLevel(id);
 const chosenClass = await getChosenClass(id);
-const total = await getTotalCompStat(chosenClass.competencias, level.nivel);
-
-interface Stats {
-  fuerza: number;
-  destreza: number;
-  constitucion: number;
-}
+// asumiendo que sabes que `competencias` es realmente un string[]
+const total = await getTotalCompStat(
+  chosenClass.competencias as string[],
+  level.level
+);
 
 // Estadisticas
 const stats = (await getStats(id)) as {
@@ -75,6 +74,7 @@ let compSabiduria = getCompStat(sabiduriaTotal);
 let sumaCompSab = Number(total.sabiduria) + Number(compSabiduria);
 let compCarisma = getCompStat(carismaTotal);
 let sumaCompCar = Number(total.carisma) + Number(compCarisma);
+
 let sumaStats =
   fuerza + destreza + constitucion + inteligencia + sabiduria + carisma;
 

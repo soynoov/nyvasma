@@ -20,6 +20,7 @@ const Jugadores = defineTable({
     trasfondo: column.text({ references: () => Trasfondos.columns.nombre }), //FK
     // La Cantidad de Inspiración que tiene
     inspiracion: column.number({ optional: true }),
+    currentHP: column.number({ optional: true }),
     // Estadisticas
     estadisticas: column.json(), // FUE, DES, CON, INT, SAB, CAR
     //Tabla de Salud

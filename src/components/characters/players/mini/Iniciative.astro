@@ -1,14 +1,23 @@
 ---
+import { getId } from '@/ts/get-id';
+import { getStatModifier } from '@/ts/get-stats';
 
+const id = getId(Astro.url.pathname);
+const des = await getStatModifier(id, 'des');
+
+let ini;
+if (des >= 0) {
+  ini = `+${des}`; // e.g. "+2" o "+0"
+}
 ---
 
 <article class='rounded-2xl p-4 h-full number shadow'>
   <section
     class='p-4 rounded-lg flex flex-col justify-center items-center gap-4 h-full pressed'
   >
-    <h6 class='text-xl uppercase font-bold des'>Ini</h6>
+    <h6 class='text-2xl uppercase font-bold des'>Iniciativa</h6>
     <hr class='w-full' />
-    <h6 class='text-4xl'>+5</h6>
+    <h6 class='text-4xl'>{ini}</h6>
   </section>
 </article>
 

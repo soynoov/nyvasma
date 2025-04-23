@@ -1,22 +1,32 @@
 ---
-interface Props {
-  hit_dice: Number;
-}
-const { hit_dice } = Astro.props;
+import { getId, getChosenClass, getChosen } from '@/ts/get-id';
+import { getStatModifier } from '@/ts/get-stats';
 
-const max_health = hit_dice;
-let health = Number(hit_dice) - 2;
-let porcentaje = (health / Number(max_health)) * 100;
+const id = getId(Astro.url.pathname);
+const chosenClass = await getChosenClass(id);
+const player = await getChosen(id);
+
+let dice_health = chosenClass.dados_golpe;
+dice_health += Number(await getStatModifier(id, 'con'));
+
+// 'dice_health' es la suma de la tabla de vida (se debe hacer sum)
+const maxHealth = Number(dice_health);
+
+// Si 'player.vida' es null o undefined, uso 'maxHealth'; en caso contrario, uso el valor de BD
+const currentHP: number = player.currentHP ?? maxHealth;
+
+// Ahora calculo el porcentaje de vida actual respecto a la máxima
+const porcentaje: number = (currentHP / maxHealth) * 100;
 ---
 
 <article class='rounded-2xl p-4'>
   <section class='rounded-lg flex gap-4 items-center justify-around p-4'>
-    <p class='text-lg'>{health}</p>
+    <p class='text-lg'>{currentHP}</p>
     <div class='pressed w-full h-[.5cm] rounded-lg'>
       <div class='rounded-lg bg-red-800 h-[.5cm]' style=`width: ${porcentaje}%`>
       </div>
     </div>
-    <p class='text-lg'>{max_health}</p>
+    <p class='text-lg'>{dice_health}</p>
   </section>
 </article>
 

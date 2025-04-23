@@ -1,7 +1,6 @@
 import { db, eq, Jugadores, Clases } from 'astro:db';
 export function getId(pathname: string): number {
   const id = Number(pathname.split('/').pop()!);
-  console.log(id);
 
   return id;
 }

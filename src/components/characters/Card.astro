@@ -8,7 +8,9 @@ const { id, name, level } = Astro.props;
 ---
 
 <a href=`/characters/players/${id}` class='rounded-2xl'>
-  <div class='card shadow shadow-hover shadow-animation rounded-2xl'>
+  <div
+    class='card shadow shadow-theme-hover shadow-theme-animation rounded-2xl'
+  >
     <img
       src=`/src/assets/characters/${name.split(' ')[0]}.jpg`
       alt=`${name}`
