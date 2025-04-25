@@ -14,16 +14,16 @@ const clase = chosen.clase;
     <h3>{raza}</h3>
   </a>
   <section class='experience col-span-6 flex justify-center items-center gap-2'>
-    <h3>Nivel <b>{nivel.nivel}</b></h3>
+    <h3>Nivel <b>{nivel.level}</b></h3>
     <div class='experience-bar rounded-lg'>
       <div
         class='experience-progress'
-        style=`width: ${nivel.bar}%; background-color: ${nivel.bar == 100 ? "var(--gray)" : "var(--color-amber-500)"}`
+        style=`width: ${nivel.bar}%; background-color: ${nivel.bar == 100 ? "var(--gray)" : "var(--alert)"}`
       >
       </div>
     </div>
     <h3>
-      <b class='text-amber-400'>{chosen.experiencia?.toLocaleString()}</b>/{
+      <b class='text-(--alert)'>{chosen.experiencia?.toLocaleString()}</b>/{
         nivel.meta.toLocaleString()
       }
     </h3>

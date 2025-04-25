@@ -83,22 +83,36 @@
   }
 }
 
-/* Stats */
+/*=====================================
+  Estadísticas: Colores específicos
+======================================*/
+
+/* Fuerza */
 .fue {
-  color: var(--fue);
+  color: var(--fue) !important;
 }
+
+/* Destreza */
 .des {
-  color: var(--des);
+  color: var(--des) !important;
 }
+
+/* Constitución */
 .con {
-  color: var(--con);
+  color: var(--con) !important;
 }
+
+/* Inteligencia */
 .int {
-  color: var(--int);
+  color: var(--int) !important;
 }
+
+/* Sabiduría */
 .sab {
-  color: var(--sab);
+  color: var(--sab) !important;
 }
+
+/* Carisma */
 .car {
-  color: var(--car);
+  color: var(--car) !important;
 }

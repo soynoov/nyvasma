@@ -12,9 +12,9 @@ import Health from '@/components/characters/Health.astro';
 import Comp from '@/components/characters/players/mini/Comp.astro';
 // DB
 import { db, eq, Jugadores, Razas, Clases } from 'astro:db';
-import Shield from '@/components/characters/players/Shield.astro';
 import HitDice from '@/components/characters/HitDice.astro';
 import HealthTable from '@/components/characters/players/HealthTable.astro';
+import ArmorClass from '@/components/characters/players/ArmorClass.astro';
 
 export async function getStaticPaths() {
   const jugadores = await db.select().from(Jugadores);
@@ -83,7 +83,7 @@ const classChosen = clase[0];
         <Speed feets={raceChosen.pies} fly={60} />
       </section>
       <section class='col-span-4 row-span-1'>
-        <Shield />
+        <ArmorClass />
       </section>
       <section class='col-span-2 row-span-1'>
         <Inspiration />

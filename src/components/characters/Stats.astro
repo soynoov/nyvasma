@@ -93,7 +93,7 @@ if (sumaStats !== 60) {
           fuerzaAdicional && (
             <>
               <span>+ {fuerzaAdicional.join(' + ')}</span>
-              <span class='indice'>=</span>
+              <span class='indice'>{'='}</span>
               <span class='total'>{fuerzaTotal}</span>
             </>
           )
@@ -105,7 +105,7 @@ if (sumaStats !== 60) {
         {'(' + getCompStat(fuerzaTotal) + ')'}
         {total.fuerza ? '+ (+' + total.fuerza + ')' : ''}
       </p>
-      <p class='total'>{sumaCompFue > 0 ? '(+' : '('}{sumaCompFue + ')'}</p>
+      <p class='total fue'>{sumaCompFue > 0 ? '[+' : '['}{sumaCompFue + ']'}</p>
     </div>
   </section>
   <section>
@@ -117,7 +117,7 @@ if (sumaStats !== 60) {
           destrezaAdicional && (
             <>
               <span>+ {destrezaAdicional.join(' + ')}</span>
-              <span class='indice'>=</span>
+              <span class='indice'>{'='}</span>
               <span class='total'>{destrezaTotal}</span>
             </>
           )
@@ -129,7 +129,7 @@ if (sumaStats !== 60) {
         {'(' + getCompStat(destrezaTotal) + ')'}
         {total.destreza ? '+ (+' + total.destreza + ')' : ''}
       </p>
-      <p class='total'>{sumaCompDes > 0 ? '(+' : '('}{sumaCompDes + ')'}</p>
+      <p class='total des'>{sumaCompDes > 0 ? '[+' : '['}{sumaCompDes + ']'}</p>
     </div>
   </section>
   <section>
@@ -141,7 +141,7 @@ if (sumaStats !== 60) {
           constitucionAdicional && (
             <>
               <span>+ {constitucionAdicional.join(' + ')}</span>
-              <span class='indice'>=</span>
+              <span class='indice'>{'='}</span>
               <span class='total'>{constitucionTotal}</span>
             </>
           )
@@ -153,7 +153,7 @@ if (sumaStats !== 60) {
         {'(' + getCompStat(constitucionTotal) + ')'}
         {total.constitucion ? '+ (+' + total.constitucion + ')' : ''}
       </p>
-      <p class='total'>{sumaCompCon > 0 ? '(+' : '('}{sumaCompCon + ')'}</p>
+      <p class='total con'>{sumaCompCon > 0 ? '[+' : '['}{sumaCompCon + ']'}</p>
     </div>
   </section>
   <section>
@@ -165,7 +165,7 @@ if (sumaStats !== 60) {
           inteligenciaAdicional && (
             <>
               <span>+ {inteligenciaAdicional.join(' + ')}</span>
-              <span class='indice'>=</span>
+              <span class='indice'>{'='}</span>
               <span class='total'>{inteligenciaTotal}</span>
             </>
           )
@@ -177,7 +177,7 @@ if (sumaStats !== 60) {
         {'(' + getCompStat(inteligenciaTotal) + ')'}
         {total.inteligencia ? '+ (+' + total.inteligencia + ')' : ''}
       </p>
-      <p class='total'>{sumaCompInt > 0 ? '(+' : '('}{sumaCompInt + ')'}</p>
+      <p class='total int'>{sumaCompInt > 0 ? '[+' : '['}{sumaCompInt + ']'}</p>
     </div>
   </section>
   <section>
@@ -189,7 +189,7 @@ if (sumaStats !== 60) {
           sabiduriaAdicional && (
             <>
               <span>+ {sabiduriaAdicional.join(' + ')}</span>
-              <span class='indice'>=</span>
+              <span class='indice'>{'='}</span>
               <span class='total'>{sabiduriaTotal}</span>
             </>
           )
@@ -201,7 +201,7 @@ if (sumaStats !== 60) {
         {'(' + getCompStat(sabiduriaTotal) + ')'}
         {total.sabiduria ? '+ (+' + total.sabiduria + ')' : ''}
       </p>
-      <p class='total'>{sumaCompSab > 0 ? '(+' : '('}{sumaCompSab + ')'}</p>
+      <p class='total sab'>{sumaCompSab > 0 ? '[+' : '['}{sumaCompSab + ']'}</p>
     </div>
   </section>
   <section>
@@ -225,7 +225,7 @@ if (sumaStats !== 60) {
         {'(' + getCompStat(carismaTotal) + ')'}
         {total.carisma ? '+ (+' + total.carisma + ')' : ''}
       </p>
-      <p class='total'>{sumaCompCar > 0 ? '(+' : '('}{sumaCompCar + ')'}</p>
+      <p class='total car'>{sumaCompCar > 0 ? '[+' : '['}{sumaCompCar + ']'}</p>
     </div>
   </section>
 </article>
@@ -259,12 +259,12 @@ if (sumaStats !== 60) {
     text-transform: uppercase;
   }
   span {
-    color: var(--des);
+    color: var(--alert);
     font-size: 15px;
   }
   .total {
     color: var(--white);
-    font-size: 25px;
+    font-size: 20px;
   }
   p,
   .indice {
@@ -275,5 +275,14 @@ if (sumaStats !== 60) {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .fue,
+  .des,
+  .con,
+  .int,
+  .sab,
+  .car {
+    font-size: 25px;
+    font-weight: 900;
   }
 </style>

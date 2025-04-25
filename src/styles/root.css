@@ -1,29 +1,45 @@
 :root {
-  /* Paleta de Colores */
-  --black: #1c1c1c;
-  --white: #e0e0e0;
-  --gray: #afafaf;
-  /* Fuentes */
-  --title: 'New Rocker';
-  --text: 'Quicksand';
-  --handwritten: 'Caveat';
-  --number: 'Dangrek';
-  /* Sombras y Efectos */
+  /*=====================================
+    Paleta de Colores
+  ======================================*/
+  --black: #1c1c1c; /* Negro profundo */
+  --white: #e0e0e0; /* Blanco suave */
+  --gray: #afafaf; /* Gris medio */
+  --grey: #6c6c6c; /* Gris oscuro */
+  --alert: #fae500; /* Amarillo alerta */
+
+  /*=====================================
+    Fuentes
+  ======================================*/
+  --title: 'New Rocker'; /* Tipografía para títulos */
+  --text: 'Quicksand'; /* Tipografía de texto principal */
+  --handwritten: 'Caveat'; /* Tipografía manuscrita */
+  --number: 'Dangrek'; /* Tipografía para números */
+
+  /*=====================================
+    Sombras y Efectos
+  ======================================*/
   --shadow: 5px 5px 10px #141414, -5px -5px 10px #242424;
   --shadow-pressed: inset 5px 5px 10px #141414, inset -5px -5px 10px #242424;
   --shadow-white: 5px 5px 10px #9d9d9d, -5px -5px 10px #ffffff;
   --shadow-white-pressed: inset 5px 5px 10px #9d9d9d,
     inset -5px -5px 10px #ffffff;
-  /* Tema */
+
+  /*=====================================
+    Tema principal
+  ======================================*/
   --theme: #75773c;
   --shadow-theme: 5px 5px 10px #52532a, -5px -5px 10px #989b4e;
   --shadow-pressed-theme: inset 5px 5px 10px #52532a,
     inset -5px -5px 10px #989b4e;
-  /* Color Stats */
-  --fue: #ac1d1b;
-  --des: #ffbb00;
-  --con: #138859;
-  --int: #4b89bf;
-  --sab: #8937a4;
-  --car: #f66985;
+
+  /*=====================================
+    Color por Estadística (Stats)
+  ======================================*/
+  --fue: #ac1d1b; /* Fuerza */
+  --des: #f79802; /* Destreza */
+  --con: #138859; /* Constitución */
+  --int: #4b89bf; /* Inteligencia */
+  --sab: #8937a4; /* Sabiduría */
+  --car: #f66985; /* Carisma */
 }

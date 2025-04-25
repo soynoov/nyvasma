@@ -170,6 +170,7 @@ export default async function seed() {
           inteligencia: [1],
         },
       },
+      inspiracion: 1,
     },
   ]);
 }

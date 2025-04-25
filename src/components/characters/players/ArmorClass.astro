@@ -1,0 +1,135 @@
+---
+import { getId } from '@/ts/get-id';
+import { getStatModifier } from '@/ts/get-stats';
+
+const id = getId(Astro.url.pathname);
+const des = await getStatModifier(id, 'des');
+let ca = 10 + des;
+console.log('Clase de Armadura: ' + ca);
+
+let armor = true;
+let armorValue = 18;
+let shield = true;
+let shieldValue = 2;
+
+const totalAC = armor
+  ? armorValue + shieldValue   // si armor === true
+  : ca + shieldValue;          // si armor === false
+---
+
+<article class='shadow rounded-2xl p-4 h-full number'>
+  <section
+    class={`
+      pressed cursor-default
+      p-4 rounded-lg 
+      flex flex-col justify-center items-center gap-4 h-full
+    `}
+  >
+    <h6 class='text-2xl des uppercase font-bold'>Clase de Armadura</h6>
+    <hr class='w-full' />
+    <div class='container'>
+      <!-- <div class='text-(--grey)'>
+        <h5>10</h5>
+        <p>{`+(${des})`}</p>
+        <h5>{'='}</h5>
+      </div> -->
+      <div class='shield-i' style={armor ? 'filter: blur(2px);' : ''}>
+        <p></p>
+        <h3>{ca}</h3>
+      </div>
+      {
+        armor && (
+          <div class='armor'>
+            <p></p>
+            <h3>{armorValue}</h3>
+          </div>
+        )
+      }
+      {
+        shield && (
+          <div class='shield-i h-2'>
+            <p></p>
+            <h5>{'+' + shieldValue}</h5>
+          </div>
+        )
+      }
+      {
+       shield && (
+        <div>
+          <p class='text-4xl'>{'='}</p>
+        </div>
+        <div class='shield font-black'>
+          <h3>{"[" + totalAC + "]"}</h3>
+        </div>
+      )
+      }
+    </div>
+  </section>
+</article>
+
+<style>
+  /*=====================================
+    Debug Mode
+  ======================================*/
+  /* * {
+    border: 1px solid white;
+  } */
+
+  /*=====================================
+    Layout: Contenedor flexible
+  ======================================*/
+  .container {
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+    justify-content: space-evenly; /* Repartir espacio entre hijos */
+    gap: 0.25rem; /* Espacio horizontal entre elementos */
+  }
+
+  /*=====================================
+    Componentes: Escudos
+  ======================================*/
+  /* Estilos comunes para .shield y .shield-i */
+  .shield,
+  .shield-i,
+  .armor {
+    background-repeat: no-repeat; /* Evitar repetición de la imagen */
+    background-position: center; /* Centrar la imagen */
+    background-size: contain; /* Ajustar la imagen dentro del contenedor */
+    padding: 2rem; /* Relleno interno */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Escudo estándar */
+  .shield {
+    background-image: url('../../../assets/resources/shields/shield.svg');
+  }
+
+  /* Escudo alternativo */
+  .shield-i {
+    background-image: url('../../../assets/resources/shields/shield-i.svg');
+  }
+
+  .armor {
+    background-image: url('../../../assets/resources/shields/armor.svg');
+    height: 1cm;
+  }
+
+  p {
+    text-transform: uppercase;
+  }
+  /*=====================================
+    Tipografía de encabezados
+  ======================================*/
+  h3 {
+    font-size: 30px; /* Tamaño principal de h3 */
+    /* Añade aquí otras propiedades: font-weight, color, etc. */
+  }
+
+  h5 {
+    font-size: 25px; /* Tamaño principal de h5 */
+    /* Añade aquí otras propiedades: font-weight, color, etc. */
+  }
+</style>
