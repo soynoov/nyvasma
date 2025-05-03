@@ -7,9 +7,9 @@ const des = await getStatModifier(id, 'des');
 let ca = 10 + des;
 console.log('Clase de Armadura: ' + ca);
 
-let armor = true;
+let armor = false;
 let armorValue = 18;
-let shield = true;
+let shield = false;
 let shieldValue = 2;
 
 const totalAC = armor
@@ -104,16 +104,16 @@ const totalAC = armor
 
   /* Escudo estándar */
   .shield {
-    background-image: url('../../../assets/resources/shields/shield.svg');
+    background-image: url('../../assets/resources/shields/shield.svg');
   }
 
   /* Escudo alternativo */
   .shield-i {
-    background-image: url('../../../assets/resources/shields/shield-i.svg');
+    background-image: url('../../assets/resources/shields/shield-i.svg');
   }
 
   .armor {
-    background-image: url('../../../assets/resources/shields/armor.svg');
+    background-image: url('../../assets/resources/shields/armor.svg');
     height: 1cm;
   }
 

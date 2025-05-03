@@ -6,7 +6,7 @@ export default async function seed() {
     .insert(Razas)
     .values([
       { nombre: 'Tiefling' },
-      { nombre: 'Aasimar', volar: 60 },
+      { nombre: 'Aasimar', movimiento: { fly: 60 } },
       { nombre: 'Undead' },
       { nombre: 'Kenku' },
       { nombre: 'Humano' },

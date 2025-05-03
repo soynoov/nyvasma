@@ -2,7 +2,21 @@
   "folder-color.pathColors": [
     {
       "folderPath": "dnd-template\\src\\pages\\index.astro\\",
-      "badge": "⭕"
+      "badge": "🔴"
+    },
+    {
+      "folderPath": "dnd-template\\src\\pages\\",
+      "badge": "ES"
+    }
+  ],
+  "folder-customization.folders": [
+    {
+      "path": "dnd-template\\src\\pages\\",
+      "badge": "🇪🇸"
+    },
+    {
+      "path": "dnd-template\\src\\pages\\enciclopedia\\",
+      "color": "foldercustomization.AnsiColor14"
     }
   ]
 }

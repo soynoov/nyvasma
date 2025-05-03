@@ -5,7 +5,7 @@ import Banner from '@/components/Banner.astro';
 import Portrait from '@/components/characters/Portrait.astro';
 import Experience from '@/components/characters/players/Experience.astro';
 import Stats from '@/components/characters/Stats.astro';
-import Speed from '@/components/characters/Speed.astro';
+import Movement from '@/components/characters/Movement.astro';
 import Iniciative from '@/components/characters/players/mini/Iniciative.astro';
 import Inspiration from '@/components/characters/players/mini/Inspiration.astro';
 import Health from '@/components/characters/Health.astro';
@@ -14,22 +14,28 @@ import Comp from '@/components/characters/players/mini/Comp.astro';
 import { db, eq, Jugadores, Razas, Clases } from 'astro:db';
 import HitDice from '@/components/characters/HitDice.astro';
 import HealthTable from '@/components/characters/players/HealthTable.astro';
-import ArmorClass from '@/components/characters/players/ArmorClass.astro';
+import ArmorClass from '@/components/characters/ArmorClass.astro';
 
 export async function getStaticPaths() {
   const jugadores = await db.select().from(Jugadores);
 
   return jugadores.map((jugador) => ({
-    params: { player: jugador.id },
+    params: { playerId: jugador.id.toString() },
   }));
 }
-const { player } = Astro.params;
+// Extrae playerId (string) de los params
+const { playerId } = Astro.params;
 
-const jugador = await db
+// Convierte a número para que coincida con el tipo de Jugadores.id
+const idNum = Number(playerId);
+
+// Ejecuta la consulta y destruye el array al instante
+const [chosen] = await db
   .select()
   .from(Jugadores)
-  .where(eq(Jugadores.id, player));
-const chosen = jugador[0]; // Elegimos el Primero
+  .where(eq(Jugadores.id, idNum));
+
+// Ahora 'chosen' es tu jugador, o 'undefined' si no hay coincidencias
 
 const raza = await db.select().from(Razas).where(eq(Razas.nombre, chosen.raza));
 const raceChosen = raza[0];
@@ -47,7 +53,7 @@ const classChosen = clase[0];
   <main class='main h-[200vh]'>
     <article class='tabs flex justify-around gap-8 mb-4 p-4 sticky top-[2cm]'>
       <a href='#info'>
-        <h2>Atributos y Habilidades</h2>
+        <h2>Estadisticas</h2>
       </a>
       <a href='#backpack'>
         <h2>Inventario</h2>
@@ -57,44 +63,55 @@ const classChosen = clase[0];
       </a>
     </article>
     <!-- MAIN -->
-    <article class='grid grid-cols-12 gap-4'>
-      <section class='col-span-12 row-span-1 uppercase'>
+    <article
+      class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-4'
+    >
+      <!-- Full‑width en móvil, 12 cols en lg -->
+      <section class='col-span-1 lg:col-span-12 uppercase'>
         <Experience
           exp={Number(chosen.experiencia)}
           race={chosen.raza}
           role={chosen.clase}
         />
       </section>
-      <section class='col-span-2 row-span-1'>
+
+      <!-- Full‑width en móvil, 2 cols en md/lg -->
+      <section class='col-span-1 md:col-span-2 lg:col-span-2'>
         <Comp />
       </section>
-      <section class='col-span-2 row-span-1'>
+      <section class='col-span-1 md:col-span-2 lg:col-span-2'>
         <Iniciative />
       </section>
-      <!-- Imagen -->
-      <section class='col-span-4 row-span-4'>
+
+      <!-- Imagen y stats: full‑width móvil, 4 cols en md, 4 cols en lg -->
+      <section class='col-span-1 md:col-span-4 lg:col-span-4 row-span-4'>
         <Portrait name={chosen.nombre.split(' ')[0]} />
       </section>
-      <!-- Estadisticas -->
-      <section class='col-span-4 row-span-4'>
+      <section class='col-span-1 md:col-span-4 lg:col-span-4 row-span-4'>
         <Stats />
       </section>
-      <section class='col-span-4 row-span-1'>
-        <Speed feets={raceChosen.pies} fly={60} />
+
+      <!-- Speed & ArmorClass: full‑width móvil, 4 cols en md, 4 cols en lg -->
+      <section class='col-span-1 md:col-span-4 lg:col-span-4'>
+        <Movement />
       </section>
-      <section class='col-span-4 row-span-1'>
+      <section class='col-span-1 md:col-span-4 lg:col-span-4'>
         <ArmorClass />
       </section>
-      <section class='col-span-2 row-span-1'>
+
+      <!-- Inspiration & HitDice: full‑width móvil, 2 cols en md/​lg -->
+      <section class='col-span-1 md:col-span-2 lg:col-span-2'>
         <Inspiration />
       </section>
-      <section class='col-span-2 row-span-1'>
+      <section class='col-span-1 md:col-span-2 lg:col-span-2'>
         <HitDice />
       </section>
-      <section class='col-span-12 row-span-1'>
+
+      <!-- Health & HealthTable: full‑width siempre -->
+      <section class='col-span-1 lg:col-span-12'>
         <Health />
       </section>
-      <section class='col-span-12'>
+      <section class='col-span-1 lg:col-span-12'>
         <HealthTable />
       </section>
     </article>
@@ -122,5 +139,6 @@ const classChosen = clase[0];
       box-shadow: var(--shadow-pressed-theme);
       background-color: var(--theme);
     }
+    /* Article */
   </style>
 </Layout>

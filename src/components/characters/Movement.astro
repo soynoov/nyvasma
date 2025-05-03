@@ -1,10 +1,7 @@
 ---
-interface Props {
-  feets: Number;
-  fly?: Number;
-  dig?: Number;
-}
-const { feets, fly, dig } = Astro.props;
+let feets = 30;
+let fly;
+let dig;
 ---
 
 <article class='rounded-2xl p-4 number shadow flex gap-4'>

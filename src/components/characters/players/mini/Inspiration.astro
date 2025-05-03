@@ -1,18 +1,26 @@
 ---
 import { getChosen, getId } from '@/ts/get-id';
 
+// Obtener ID del personaje desde la URL y sus datos
 const id = getId(Astro.url.pathname);
 const player = await getChosen(id);
-let inspiration = player.inspiracion;
+
+// Si no tiene inspiración, se usa 0 por defecto
+let inspiration = player.inspiracion || 0;
 ---
 
 <article class='shadow rounded-2xl p-4 h-full number'>
   <section
-    class=`pressed-white
-    p-4 rounded-lg flex flex-col justify-center items-center gap-4 h-full cursor-pointer`
+    class='pressed-white p-4 rounded-lg flex flex-col justify-center items-center gap-4 h-full cursor-pointer'
+    title='Inspiración actual'
   >
-    <h6 class='text-xl uppercase font-bold'>Ins</h6>
+    <!-- Título del componente -->
+    <h6 class='text-xl uppercase font-bold'>Inspiracion</h6>
+
+    <!-- Separador visual -->
     <hr class='w-full' />
-    <h3 class='text-4xl'>{'[' + inspiration + ']'}</h3>
+
+    <!-- Valor de inspiración entre corchetes -->
+    <h3 class='text-4xl'>[{inspiration}]</h3>
   </section>
 </article>

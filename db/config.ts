@@ -50,9 +50,7 @@ const Razas = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
     nombre: column.text({ unique: true }),
-    pies: column.number({ default: 30 }),
-    volar: column.number({ optional: true, default: 0 }),
-    excavar: column.number({ optional: true, default: 0 }),
+    movimiento: column.json({ default: { feets: 30 } }),
   },
 });
 
